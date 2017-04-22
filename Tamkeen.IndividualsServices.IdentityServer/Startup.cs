@@ -20,7 +20,6 @@ namespace Tamkeen.IndividualServices.IdentityServer
                .WriteTo.Trace()
                .CreateLogger();
 
-
             app.Map("/admin", adminApp =>
             {
                 var factory = new IdentityManagerServiceFactory();
@@ -32,20 +31,30 @@ namespace Tamkeen.IndividualServices.IdentityServer
                 });
             });
 
-            app.Map("", core =>
+            app.Map("/core", core =>
             {
-                var idSvrFactory = Factory.Configure("IdSvr3Config");
+                var idSvrFactory = Factory.Configure("IdSvr3Config", "dbo");
                 idSvrFactory.ConfigureUserService("AspId");
 
                 var options = new IdentityServerOptions
                 {
                     SiteName = "IdentityServer3 - Individual services AspNetIdentity",
+                    RequireSsl = true,
                     SigningCertificate = Certificate.Get(),
+                    
                     Factory = idSvrFactory,
                     //AuthenticationOptions = new AuthenticationOptions
                     //{
                     //    IdentityProviders = ConfigureAdditionalIdentityProviders,
-                    //}
+                    //},
+
+                    EventsOptions = new EventsOptions
+                    {
+                        RaiseSuccessEvents = true,
+                        RaiseErrorEvents = true,
+                        RaiseFailureEvents = true,
+                        RaiseInformationEvents = true
+                    }
                 };
 
                 core.UseIdentityServer(options);

@@ -1,21 +1,33 @@
-﻿using IdentityServer3.AspNetIdentity;
+﻿using IdentityManager;
+using IdentityServer3.AspNetIdentity;
+using Microsoft.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Entities;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Manager;
+using IdentityServer3.Core.Models;
 
 namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
 {
     public class MolUserService : AspNetIdentityUserService<MolUser, int>
     {
+        OwinContext ctx;
         public MolUserService(MolUserManager userMgr)
             : base(userMgr)
         {
+            //ctx = new OwinContext(owinEnv.Environment);
         }
+
+        //custom login page
+        //public override Task PreAuthenticateAsync(PreAuthenticationContext context)
+        //{
+        //    var id = ctx.Request.Query.Get("signin");
+        //    context.AuthenticateResult = new AuthenticateResult("~/custom/login?id=" + id, (IEnumerable<Claim>)null);
+        //    return Task.FromResult(0);
+        //}
 
         protected override async Task<IEnumerable<System.Security.Claims.Claim>> GetClaimsFromAccount(MolUser user)
         {

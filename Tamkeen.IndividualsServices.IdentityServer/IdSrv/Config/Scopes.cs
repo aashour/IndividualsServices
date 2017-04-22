@@ -8,63 +8,32 @@ namespace IdentityServer3.Host.Config
     {
         public static IEnumerable<Scope> Get()
         {
-            return new[]
+            var scopes = new List<Scope>
                 {
-                    ////////////////////////
-                    // identity scopes
-                    ////////////////////////
-
-                    StandardScopes.OpenId,
-                    StandardScopes.Profile,
-                    StandardScopes.Email,
-                    //StandardScopes.Address,
-                    //StandardScopes.OfflineAccess,
-                    //StandardScopes.RolesAlwaysInclude,
-                    //StandardScopes.AllClaims,
-
-                    ////////////////////////
-                    // resource scopes
-                    ////////////////////////
-
                     new Scope
                     {
-                        Name = "read",
-                        DisplayName = "Read data",
-                        Type = ScopeType.Resource,
-                        Emphasize = false,
-
-                        ScopeSecrets = new List<Secret>
+                        Enabled = true,
+                        Name = "roles",
+                        Type = ScopeType.Identity,
+                        Claims = new List<ScopeClaim>
                         {
-                            new Secret("secret".Sha256())
+                            new ScopeClaim("role")
                         }
                     },
                     new Scope
                     {
-                        Name = "write",
-                        DisplayName = "Write data",
+                        Name = "webApi",
+                         DisplayName = "access web api",
                         Type = ScopeType.Resource,
-                        Emphasize = true,
-
-                        ScopeSecrets = new List<Secret>
-                        {
-                            new Secret("secret".Sha256())
-                        }
-                    },
-                    new Scope
-                    {
-                        Name = "idmgr",
-                        DisplayName = "IdentityManager",
-                        Type = ScopeType.Resource,
-                        Emphasize = true,
-                        ShowInDiscoveryDocument = false,
-
                         Claims = new List<ScopeClaim>
                         {
                             new ScopeClaim(Constants.ClaimTypes.Name),
-                            new ScopeClaim(Constants.ClaimTypes.Role)
+                            new ScopeClaim(Constants.ClaimTypes.Role),
                         }
-                    }
+                    },
                 };
+            scopes.AddRange(StandardScopes.All);
+            return scopes;
         }
     }
 }

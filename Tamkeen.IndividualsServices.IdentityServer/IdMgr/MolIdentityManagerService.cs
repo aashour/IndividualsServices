@@ -1,5 +1,4 @@
-﻿using IdentityManager;
-using IdentityManager.AspNetIdentity;
+﻿using IdentityManager.AspNetIdentity;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Entities;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Manager;
 

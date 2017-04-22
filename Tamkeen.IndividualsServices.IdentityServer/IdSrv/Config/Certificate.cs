@@ -9,6 +9,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv.Config
         {
             X509Certificate2 cer = new X509Certificate2();
             X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+            store.Open(OpenFlags.ReadOnly);
 
             X509Certificate2Collection cers = store.Certificates.Find(X509FindType.FindBySubjectName, "idsrv3test", false);
             if (cers.Count > 0)

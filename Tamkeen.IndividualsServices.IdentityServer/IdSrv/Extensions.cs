@@ -1,9 +1,5 @@
 ﻿using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Tamkeen.IndividualServices.IdentityServer.AspId;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Manager;
 using Tamkeen.IndividualServices.IdentityServer.AspId.Store;

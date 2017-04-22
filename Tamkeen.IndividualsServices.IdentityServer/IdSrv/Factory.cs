@@ -1,6 +1,5 @@
 ﻿using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
-using IdentityServer3.Core.Services.InMemory;
 using IdentityServer3.Core.Services.Default;
 using IdentityServer3.Host.Config;
 using IdentityServer3.EntityFramework;
@@ -15,11 +14,12 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
 {
     class Factory
     {
-        public static IdentityServerServiceFactory Configure(string connString)
+        public static IdentityServerServiceFactory Configure(string connString, string schema)
         {
             var efConfig = new EntityFrameworkServiceOptions
             {
                 ConnectionString = connString,
+                Schema = schema,
                 //SynchronousReads = true
             };
 
