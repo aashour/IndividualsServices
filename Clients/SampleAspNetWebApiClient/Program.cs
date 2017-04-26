@@ -23,17 +23,17 @@ namespace SampleAspNetWebApiClient
         {
             var client = new HttpClient();
             client.SetBearerToken(response.AccessToken);
-            
+
 
             //Console.WriteLine(client.GetStringAsync("https://localhost:44302/test").Result);
 
-            Console.WriteLine(client.GetStringAsync("https://aashourpc:44304/identity").Result);
+            Console.WriteLine(client.GetStringAsync(Shared.Constants.AspNetWebApiSampleApi + "identity").Result);
         }
 
         static TokenResponse GetClientToken()
         {
             var client = new TokenClient(
-                "https://aashourpc:44300/core/connect/token",
+                Shared.Constants.TokenEndpoint,
                 "silicon",
                 "F621F470-9731-4A25-80EF-67A6F7C5F4B8");
 
@@ -43,7 +43,7 @@ namespace SampleAspNetWebApiClient
         static TokenResponse GetUserToken()
         {
             var client = new TokenClient(
-                "https://aashourpc:44300/core/connect/token",
+                Shared.Constants.TokenEndpoint,
                 "carbon",
                 "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
 

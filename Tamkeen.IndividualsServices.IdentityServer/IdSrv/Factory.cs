@@ -24,7 +24,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
             };
 
             // these two calls just pre-populate the test DB from the in-memory configuration
-            ConfigureClients(Clients.Get(), efConfig);
+            ConfigureClients(Clients.Get(true), efConfig);
             ConfigureScopes(Scopes.Get(), efConfig);
 
             var factory = new IdentityServerServiceFactory();

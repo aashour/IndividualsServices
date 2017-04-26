@@ -6,7 +6,7 @@ namespace IdentityServer3.Host.Config
 {
     public class Clients
     {
-        public static List<Client> Get()
+        public static List<Client> Get(bool requireConsent)
         {
             return new List<Client>
             {
@@ -15,18 +15,19 @@ namespace IdentityServer3.Host.Config
                 /////////////////////////////////////////////////////////////
                 new Client
                 {
-                    ClientId = "implicit.client",
+                    ClientId = "mvc.owin",
                     ClientName = "Individual services Implicit Client",
                     Enabled = true,
-                    Flow = Flows.Implicit,
+                    Flow = Flows.Hybrid,
 
-                    RequireConsent = true,
+                    RequireConsent = requireConsent,
                     AllowRememberConsent = true,
+                    AllowAccessTokensViaBrowser=false,
 
                     RedirectUris =
-                        new List<string> {"https://localhost:44304/account/signInCallback"},
+                        new List<string> {Shared.Constants.ClientRedirectUri},
                     PostLogoutRedirectUris =
-                        new List<string> {"https://localhost:44304/"},
+                        new List<string> {Shared.Constants.ClientLogoutRedirectUri},
 
                     AllowedScopes = new List<string>
                     {
@@ -39,7 +40,10 @@ namespace IdentityServer3.Host.Config
                         "write",
                         "webApi"
                     },
-
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
                     AccessTokenType = AccessTokenType.Jwt,
                     
                     //IdentityTokenLifetime=,

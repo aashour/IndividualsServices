@@ -14,7 +14,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
 {
     public class MolUserService : AspNetIdentityUserService<MolUser, int>
     {
-        OwinContext ctx;
+        //OwinContext ctx;
         public MolUserService(MolUserManager userMgr)
             : base(userMgr)
         {

@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Shared.Models
+{
+    public partial class ServiceLog
+    {
+        public int Id { get; set; }
+
+        public int ServiceId { get; set; }
+
+        public long? EstablishmentId { get; set; }
+
+        public long? LaborerId { get; set; }
+
+        public long RequesterIdNo { get; set; }
+
+        public virtual Establishment Establishment { get; set; }
+
+        public virtual Laborer Laborer { get; set; }
+
+        public virtual User Requester { get; set; }
+    }
+}

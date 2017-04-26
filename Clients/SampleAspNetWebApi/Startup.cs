@@ -6,6 +6,7 @@ using Serilog;
 using IdentityManager.Core.Logging;
 using IdentityManager.Logging;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(SampleAspNetWebApi.Startup))]
 
@@ -15,25 +16,39 @@ namespace SampleAspNetWebApi
     {
         public void Configuration(IAppBuilder app)
         {
+            LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Verbose()
+               .WriteTo.Trace()
+               .CreateLogger();
+
             // accept access tokens from identityserver and require a scope of 'webApi'
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "https://aashourpc:44300/core/",
+                Authority = Shared.Constants.BaseAddress,
                 ValidationMode = ValidationMode.ValidationEndpoint,
-                
-                RequiredScopes = new[] { "webApi", "openid" }
+
+                RequiredScopes = new[] { "webApi" },
+                ClientSecret = "secret"
             });
 
             // configure web api
             var config = new HttpConfiguration();
-            config.MapHttpAttributeRoutes();
+
+            // Web API configuration and services
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-            // require authentication for all controllers
-            //config.Filters.Add(new AuthorizeAttribute());
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.EnableCors(
+                    new EnableCorsAttribute(
+                            "https://localhost:44300, https://localhost:44305, http://localhost:44305 ,https://localhost:44304",
+                            "accept, authorization",
+                            "GET", "WWW-Authenticate"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "{controller}",
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

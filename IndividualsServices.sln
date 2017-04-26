@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualServices.IdentityServer", "Tamkeen.IndividualsServices.IdentityServer\Tamkeen.IndividualServices.IdentityServer.csproj", "{FFA834D2-5F4E-44F6-8EEB-E2D94FEA80EE}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApi", "Clients\SampleAspNetWebApi\SampleAspNetWebApi.csproj", "{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApiClient", "Clients\SampleAspNetWebApiClient\SampleAspNetWebApiClient.csproj", "{BE77E895-D91C-4515-8E5D-4756E64A83E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "Clients\SampleAspNetWebMvc\SampleAspNetWebMvc.csproj", "{300C852F-06AA-4D4B-8728-93D0E97712DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,14 @@ Global
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1} = {6975D09C-E080-4996-890D-64DFCF44B126}
+		{300C852F-06AA-4D4B-8728-93D0E97712DC} = {6975D09C-E080-4996-890D-64DFCF44B126}
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0} = {6975D09C-E080-4996-890D-64DFCF44B126}
 	EndGlobalSection
 EndGlobal
