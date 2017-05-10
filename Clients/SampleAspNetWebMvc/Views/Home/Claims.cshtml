@@ -29,7 +29,7 @@
                 url: "https://localhost:44304/identity",
                 type: 'GET',
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Authorization", "BasicBearer " + access_token);
+                    xhr.setRequestHeader("Authorization", "Bearer " + access_token);
                 },
                 success: function (data) {
                     $('#result').style.display = "";

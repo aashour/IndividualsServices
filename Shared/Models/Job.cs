@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public partial class Job
+    public partial class Job : BaseEntity<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public bool IsForSaudiOnly { get; set; }
         public string JobCode { get; set; }

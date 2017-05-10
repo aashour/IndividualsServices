@@ -7,9 +7,17 @@ using IdentityManager.Core.Logging;
 using IdentityManager.Logging;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Shared.Data;
+using Autofac;
+using Shared.Infrastructure.DependencyManagement;
+using Shared.Infrastructure;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using System.Web.Mvc;
+using Autofac.Integration.WebApi;
 
 [assembly: OwinStartup(typeof(SampleAspNetWebApi.Startup))]
-
 namespace SampleAspNetWebApi
 {
     public class Startup
@@ -52,7 +60,43 @@ namespace SampleAspNetWebApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
+
+            var container = RegisterDependencies(config);
+
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
             app.UseWebApi(config);
+
+        }
+
+
+
+
+        protected virtual IContainer RegisterDependencies(HttpConfiguration config)
+        {
+            var builder = new ContainerBuilder();
+
+            //dependencies
+            var typeFinder = new WebAppTypeFinder();
+            builder = new ContainerBuilder();
+            builder.RegisterInstance(typeFinder).As<ITypeFinder>().SingleInstance();
+
+
+            //register dependencies provided by other assemblies
+            builder = new ContainerBuilder();
+            var drTypes = typeFinder.FindClassesOfType<IDependencyRegistrar>();
+            var drInstances = new List<IDependencyRegistrar>();
+            foreach (var drType in drTypes)
+                drInstances.Add((IDependencyRegistrar)Activator.CreateInstance(drType));
+            //sort
+            drInstances = drInstances.AsQueryable().OrderBy(t => t.Order).ToList();
+            foreach (var dependencyRegistrar in drInstances)
+                dependencyRegistrar.Register(builder, typeFinder);
+
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            return container;
         }
     }
 }

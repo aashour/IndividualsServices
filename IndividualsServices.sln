@@ -11,9 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApi", "Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApiClient", "Clients\SampleAspNetWebApiClient\SampleAspNetWebApiClient.csproj", "{BE77E895-D91C-4515-8E5D-4756E64A83E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "Clients\SampleAspNetWebMvc\SampleAspNetWebMvc.csproj", "{300C852F-06AA-4D4B-8728-93D0E97712DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Data", "Tamkeen.IndividualsServices.Data\Tamkeen.IndividualsServices.Data.csproj", "{DEDD561C-740B-4DAA-B77A-B22355EB006F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Web.Framework", "Tamkeen.IndividualsServices.Web.Framework\Tamkeen.IndividualsServices.Web.Framework.csproj", "{DA06F963-4075-426B-A8A0-F53F97D254C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "Clients\SampleAspNetWebMvc\SampleAspNetWebMvc.csproj", "{1DF8470F-D921-417F-B052-3EDF1777A3C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Services", "Tamkeen.IndividualsServices.Services\Tamkeen.IndividualsServices.Services.csproj", "{4B15618E-7EA7-452B-9208-02CBF38CBCD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +39,26 @@ Global
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{300C852F-06AA-4D4B-8728-93D0E97712DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEDD561C-740B-4DAA-B77A-B22355EB006F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEDD561C-740B-4DAA-B77A-B22355EB006F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEDD561C-740B-4DAA-B77A-B22355EB006F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEDD561C-740B-4DAA-B77A-B22355EB006F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA06F963-4075-426B-A8A0-F53F97D254C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA06F963-4075-426B-A8A0-F53F97D254C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA06F963-4075-426B-A8A0-F53F97D254C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA06F963-4075-426B-A8A0-F53F97D254C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF8470F-D921-417F-B052-3EDF1777A3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF8470F-D921-417F-B052-3EDF1777A3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF8470F-D921-417F-B052-3EDF1777A3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF8470F-D921-417F-B052-3EDF1777A3C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,7 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1} = {6975D09C-E080-4996-890D-64DFCF44B126}
-		{300C852F-06AA-4D4B-8728-93D0E97712DC} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0} = {6975D09C-E080-4996-890D-64DFCF44B126}
+		{1DF8470F-D921-417F-B052-3EDF1777A3C8} = {6975D09C-E080-4996-890D-64DFCF44B126}
 	EndGlobalSection
 EndGlobal

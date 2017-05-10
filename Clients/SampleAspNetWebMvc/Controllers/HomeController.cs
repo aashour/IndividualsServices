@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-
 namespace SampleAspNetWebMvc.Controllers
 {
     public class HomeController : Controller

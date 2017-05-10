@@ -145,7 +145,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = "12863518", FullName = "fullname" },
+                User = new Shared.Models.User { Id = 33, UserName = "12863518", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 12863518
             };
             OracleTransactionLog log2 = new OracleTransactionLog
@@ -166,7 +166,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = 1031470568.ToString(), FullName = "fullname2" },
+                User = new Shared.Models.User { Id = 33, UserName = 1031470568.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 12863518
             };
             OracleTransactionLog log3 = new OracleTransactionLog
@@ -187,7 +187,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = 1047365240.ToString(), FullName = "fullname3" },
+                User = new Shared.Models.User { Id = 33, UserName = 1047365240.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 11062868
             };
 
@@ -209,7 +209,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = 1076744463.ToString(), FullName = "fullname4" },
+                User = new Shared.Models.User { Id = 33, UserName = 1076744463.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 172833
             };
             OracleTransactionLog log5 = new OracleTransactionLog
@@ -230,7 +230,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = 1043604378.ToString(), FullName = "fullname5" },
+                User = new Shared.Models.User { Id = 33, UserName = 1043604378.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 12593634
             };
 
@@ -253,7 +253,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 1,
-                User = new Shared.Models.User { Id = 33, UserName = 1059869154.ToString(), FullName = "fullname6" },
+                User = new Shared.Models.User { Id = 33, UserName = 1059869154.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 819067
             };
             OracleTransactionLog log7 = new OracleTransactionLog
@@ -274,7 +274,7 @@ namespace SampleAspNetWebApi.Controllers
                 SerYY = 1438,
                 TimeStamp = new DateTime(2017, 4, 26),
                 TransactionStatus = 3,
-                User = new Shared.Models.User { Id = 33, UserName = 1037748546.ToString(), FullName = "fullname7" },
+                User = new Shared.Models.User { Id = 33, UserName = 1037748546.ToString(), FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 UserId = 12167795
             };
 

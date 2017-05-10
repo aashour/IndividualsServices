@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public partial class OracleTransactionLog
+    public partial class OracleTransactionLog : BaseEntity<long>
     {
-        public long Id { get; set; }
 
         public long OnlineRequestsId { get; set; }
 
@@ -28,7 +28,7 @@ namespace Shared.Models
 
         public string RepresentativeIdNo { get; set; }
 
-        public int? TransactionStatus { get; set; }
+        public long? TransactionStatus { get; set; }
 
         public string OracleResult { get; set; }
 

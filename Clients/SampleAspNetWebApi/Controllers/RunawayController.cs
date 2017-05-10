@@ -1,26 +1,52 @@
-﻿using Shared.Models;
+﻿using Shared.Data;
+using Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Tamkeen.IndividualsServices.Services;
 
 namespace SampleAspNetWebApi.Controllers
 {
     [Authorize]
     public class RunawayController : ApiController
     {
-
+        private readonly IServiceLogService _serviceLogService;
         private static List<ServiceLog> logs = new List<ServiceLog>();
 
-        public RunawayController()
+        public RunawayController(IServiceLogService serviceLogService)
         {
+            this._serviceLogService = serviceLogService;
             AllServiceLogs();
         }
 
         private void AllServiceLogs()
         {
+            var services = this._serviceLogService.SearchServiceLog(pageIndex: 0, pageSize: 20);
+
+            if (services.Count > 0)
+            {
+                foreach (var item in services)
+                {
+                    logs.Add(new ServiceLog
+                    {
+                        Establishment = item.Establishment,
+                        EstablishmentId = item.EstablishmentId,
+                        Id = item.Id,
+                        Laborer = item.Laborer,
+                        LaborerId = item.LaborerId,
+                        Requester = item.Requester,
+                        RequesterIdNo = item.RequesterIdNo,
+                        ServiceId = item.ServiceId,
+                    });
+                }
+
+                return;
+            }
+
+
             Establishment est1 = new Establishment { Id = 1, Name = "منشأة 1", LaborOfficeId = 1, SequenceNumber = 233 };
             Establishment est2 = new Establishment { Id = 2, Name = "2 منشأة", LaborOfficeId = 1, SequenceNumber = 4536 };
             Establishment est3 = new Establishment { Id = 3, Name = "3 منشأة", LaborOfficeId = 1, SequenceNumber = 787654 };
@@ -137,7 +163,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 233578889,
                 Id = 1,
                 Laborer = lab1,
-                Requester = new Shared.Models.User { Id = 1, UserName = "233578889", FullName = "full name" },
+                Requester = new Shared.Models.User { Id = 1, UserName = "233578889", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log2 = new ServiceLog
@@ -148,7 +174,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 2335789855,
                 Id = 2,
                 Laborer = lab1,
-                Requester = new Shared.Models.User { Id = 2, UserName = "2335789855", FullName = "full name 1" },
+                Requester = new Shared.Models.User { Id = 2, UserName = "2335789855", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log3 = new ServiceLog
@@ -159,7 +185,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 255888996,
                 Id = 3,
                 Laborer = lab1,
-                Requester = new Shared.Models.User { Id = 3, UserName = "255888996", FullName = "full name 3" },
+                Requester = new Shared.Models.User { Id = 3, UserName = "255888996", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log4 = new ServiceLog
@@ -170,7 +196,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 1545988722,
                 Id = 4,
                 Laborer = lab2,
-                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FullName = "full name 343" },
+                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log5 = new ServiceLog
@@ -181,7 +207,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 1545988722,
                 Id = 5,
                 Laborer = lab2,
-                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FullName = "full name 6767" },
+                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log6 = new ServiceLog
@@ -192,7 +218,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 1545988722,
                 Id = 6,
                 Laborer = lab2,
-                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FullName = "full name 6767" },
+                Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
             ServiceLog log7 = new ServiceLog
@@ -203,7 +229,7 @@ namespace SampleAspNetWebApi.Controllers
                 RequesterIdNo = 1234567890,
                 Id = 7,
                 Laborer = lab3,
-                Requester = new Shared.Models.User { Id = 7, UserName = "1234567890", FullName = "full name 95852" },
+                Requester = new Shared.Models.User { Id = 7, UserName = "1234567890", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
 

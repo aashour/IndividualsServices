@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,38 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public partial class User
+    public partial class User : BaseEntity<long>
     {
-        public long Id { get; set; }
         public string UserName { get; set; }
-
-        public string FullName { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public string FourthName { get; set; }
+        public int? LaborOfficeId { get; set; }
+        public int? NationalityId { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public int? TypeId { get; set; }
+        public long? IdNumber { get; set; }
+        public DateTime? IdExpiryDate { get; set; }
+        public long? IqamaNumber { get; set; }
+        public DateTime? IqamaExpiryDate { get; set; }
+        public string Email { get; set; }
+        public bool? Deleted { get; set; }
+        public bool? Activated { get; set; }
+        public string MobileNumber { get; set; }
+        public bool IsSystem { get; set; }
+        public bool EmailVerified { get; set; }
+        public int EmailVerificationCount { get; set; }
+        public System.DateTime? EmailLastVerificationDate { get; set; }
+        public bool MobileVerified { get; set; }
+        public int MobileVerificationCount { get; set; }
+        public System.DateTime? MobileLastVerificationDate { get; set; }
+        public bool DataVerified { get; set; }
+        public virtual UserType Type { get; set; }
+        public virtual LaborOffice LaborOffice { get; set; }
+        public virtual Nationality Nationality { get; set; }
+        public virtual ICollection<OracleTransactionLog> OracleTransactionLogs { get; set; } = new List<OracleTransactionLog>();
+        public virtual ICollection<ServiceLog> ServiceLogs { get; set; } = new List<ServiceLog>();
     }
 }
