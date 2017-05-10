@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Shared.Data
     /// <summary>
     /// Base class for entities
     /// </summary>
-    public abstract partial class BaseEntity<T>
+    public abstract partial class BaseEntity<T> : IEquatable<T>
     {
         /// <summary>
         /// Gets or sets the entity identifier
@@ -20,6 +21,11 @@ namespace Shared.Data
         public override bool Equals(object obj)
         {
             return Equals(obj as BaseEntity<T>);
+        }
+
+        public bool Equals(T other)
+        {
+            return Equals(Id, other);
         }
 
         public virtual bool Equals(BaseEntity<T> other)
@@ -69,6 +75,5 @@ namespace Shared.Data
         {
             return GetType();
         }
-
     }
 }

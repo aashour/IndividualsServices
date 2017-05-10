@@ -1,4 +1,5 @@
 ﻿using Shared.Data;
+using Shared.DataStructure;
 using Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace SampleAspNetWebApi.Controllers
     public class RunawayController : ApiController
     {
         private readonly IServiceLogService _serviceLogService;
-        private static List<ServiceLog> logs = new List<ServiceLog>();
+        private static IPagedList<ServiceLog> logs = null;
 
         public RunawayController(IServiceLogService serviceLogService)
         {
@@ -24,28 +25,10 @@ namespace SampleAspNetWebApi.Controllers
 
         private void AllServiceLogs()
         {
-            var services = this._serviceLogService.SearchServiceLog(pageIndex: 0, pageSize: 20);
+            var logs = this._serviceLogService.SearchServiceLog(pageIndex: 0, pageSize: 20);
 
-            if (services.Count > 0)
-            {
-                foreach (var item in services)
-                {
-                    logs.Add(new ServiceLog
-                    {
-                        Establishment = item.Establishment,
-                        EstablishmentId = item.EstablishmentId,
-                        Id = item.Id,
-                        Laborer = item.Laborer,
-                        LaborerId = item.LaborerId,
-                        Requester = item.Requester,
-                        RequesterIdNo = item.RequesterIdNo,
-                        ServiceId = item.ServiceId,
-                    });
-                }
-
+            if (logs.Count > 0)
                 return;
-            }
-
 
             Establishment est1 = new Establishment { Id = 1, Name = "منشأة 1", LaborOfficeId = 1, SequenceNumber = 233 };
             Establishment est2 = new Establishment { Id = 2, Name = "2 منشأة", LaborOfficeId = 1, SequenceNumber = 4536 };
@@ -160,7 +143,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est1,
                 EstablishmentId = est1.Id,
                 LaborerId = lab1.Id,
-                RequesterIdNo = 233578889,
+                RequesterIdNo = "233578889",
                 Id = 1,
                 Laborer = lab1,
                 Requester = new Shared.Models.User { Id = 1, UserName = "233578889", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -171,7 +154,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est1,
                 EstablishmentId = est1.Id,
                 LaborerId = lab1.Id,
-                RequesterIdNo = 2335789855,
+                RequesterIdNo = "2335789855",
                 Id = 2,
                 Laborer = lab1,
                 Requester = new Shared.Models.User { Id = 2, UserName = "2335789855", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -182,7 +165,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est1,
                 EstablishmentId = est1.Id,
                 LaborerId = lab1.Id,
-                RequesterIdNo = 255888996,
+                RequesterIdNo = "255888996",
                 Id = 3,
                 Laborer = lab1,
                 Requester = new Shared.Models.User { Id = 3, UserName = "255888996", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -193,7 +176,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est2,
                 EstablishmentId = est2.Id,
                 LaborerId = lab2.Id,
-                RequesterIdNo = 1545988722,
+                RequesterIdNo = "1545988722",
                 Id = 4,
                 Laborer = lab2,
                 Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -204,7 +187,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est2,
                 EstablishmentId = est2.Id,
                 LaborerId = lab2.Id,
-                RequesterIdNo = 1545988722,
+                RequesterIdNo = "1545988722",
                 Id = 5,
                 Laborer = lab2,
                 Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -215,7 +198,7 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est2,
                 EstablishmentId = est2.Id,
                 LaborerId = lab2.Id,
-                RequesterIdNo = 1545988722,
+                RequesterIdNo = "1545988722",
                 Id = 6,
                 Laborer = lab2,
                 Requester = new Shared.Models.User { Id = 4, UserName = "1545988722", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
@@ -226,21 +209,23 @@ namespace SampleAspNetWebApi.Controllers
                 Establishment = est3,
                 EstablishmentId = est3.Id,
                 LaborerId = lab3.Id,
-                RequesterIdNo = 1234567890,
+                RequesterIdNo = "1234567890",
                 Id = 7,
                 Laborer = lab3,
                 Requester = new Shared.Models.User { Id = 7, UserName = "1234567890", FirstName = "first", SecondName = "second", ThirdName = "third", FourthName = "last" },
                 ServiceId = 24,
             };
 
+            List<ServiceLog> lst = new List<ServiceLog>();
+            lst.Add(log1);
+            lst.Add(log2);
+            lst.Add(log3);
+            lst.Add(log4);
+            lst.Add(log5);
+            lst.Add(log6);
+            lst.Add(log7);
 
-            logs.Add(log1);
-            logs.Add(log2);
-            logs.Add(log3);
-            logs.Add(log4);
-            logs.Add(log5);
-            logs.Add(log6);
-            logs.Add(log7);
+            logs = new PagedList<ServiceLog>(lst, 0, 10);
         }
 
         // GET: /Runaway/5
@@ -268,7 +253,7 @@ namespace SampleAspNetWebApi.Controllers
         {
             if (log != null)
             {
-                var result = logs.Find(lg => lg.Laborer.IdNo == id.ToString());
+                var result = this._serviceLogService.ServiceLogForLaborer(id, 0, 10).FirstOrDefault();
                 if (result != null)
                     result = log;
             }

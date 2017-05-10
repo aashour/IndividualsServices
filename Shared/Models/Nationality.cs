@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    public partial class Nationality : BaseEntity<int>
+    public partial class Nationality : BaseEntity<short>
     {
 
         public string Name { get; set; }

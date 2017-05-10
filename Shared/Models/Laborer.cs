@@ -18,14 +18,12 @@ namespace Shared.Models
         public string ThirdName { get; set; }
         public string FourthName { get; set; }
         public string IdNo { get; set; }
-        public int NationalityId { get; set; }
+        public short NationalityId { get; set; }
         public int JobId { get; set; }
         public long EstablishmentId { get; set; }
         public int? StatusId { get; set; }
         public string BorderNo { get; set; }
-
         public int? TypeId { get; set; }
-
         public virtual LaborerStatus Status { get; set; }
         public virtual SaudiFlag SaudiFlag { get; set; }
         public virtual Job Job { get; set; }
@@ -34,7 +32,6 @@ namespace Shared.Models
         public virtual LaborOffice LaborOffice { get; set; }
         public virtual LaborerType Type { get; set; }
         //public virtual ICollection<TransferRequest> TransferRequests { get; set; } = new List<TransferRequest>();
-
         public virtual ICollection<ServiceLog> ServiceLogs { get; set; } = new List<ServiceLog>();
         public virtual ICollection<OracleTransactionLog> SponsoTransferRequests { get; set; } = new List<OracleTransactionLog>();
 

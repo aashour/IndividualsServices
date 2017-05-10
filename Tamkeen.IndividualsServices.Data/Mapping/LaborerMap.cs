@@ -61,15 +61,19 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.HasOptional(t => t.Status)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.StatusId);
+
             this.HasOptional(t => t.Type)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.TypeId);
+
             this.HasRequired(t => t.SaudiFlag)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.SaudiFlagId);
+
             this.HasRequired(t => t.Nationality)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.NationalityId);
+
             this.HasRequired(t => t.Establishment)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.EstablishmentId);
@@ -79,7 +83,7 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
                 .HasForeignKey(d => d.LaborOfficeId);
 
             this.HasRequired(t => t.Job)
-                .WithMany()
+                .WithMany(t => t.Laborers)
                 .HasForeignKey(t => t.JobId);
         }
     }

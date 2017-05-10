@@ -69,14 +69,17 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.Property(t => t.MobileVerificationCount).HasColumnName("MobileVerificationCount");
             this.Property(t => t.MobileLastVerificationDate).HasColumnName("MobileLastVerificationDate");
             this.Property(t => t.DataVerified).HasColumnName("IsDataVerified");
+            this.Property(t => t.LaborOfficeId).HasColumnName("FK_LaborOfficeId");
 
             // Relationships
             this.HasOptional(t => t.Type)
                 .WithMany(t => t.Users)
                 .HasForeignKey(d => d.TypeId);
+
             this.HasOptional(t => t.Nationality)
                 .WithMany(t => t.Users)
                 .HasForeignKey(d => d.NationalityId);
+
             this.HasOptional(t => t.LaborOffice)
                 .WithMany(t => t.Users)
                 .HasForeignKey(d => d.LaborOfficeId);

@@ -19,7 +19,7 @@ namespace Tamkeen.IndividualsServices.Services
             this._serviceLogRepository = serviceLogRepository;
         }
 
-        public IPagedList<ServiceLog> SearchServiceLog(int serviceLogId = 0, long establishmentId = 0, long laborerId = 0, long requesterIdNo = 0,
+        public IPagedList<ServiceLog> SearchServiceLog(int serviceLogId = 0, long establishmentId = 0, long laborerId = 0, string requesterIdNo = "",
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _serviceLogRepository.Table;
@@ -42,7 +42,7 @@ namespace Tamkeen.IndividualsServices.Services
                         where service.LaborerId == laborerId
                         select service;
             }
-            if (requesterIdNo > 0)
+            if (!string.IsNullOrWhiteSpace(requesterIdNo))
             {
                 query = from service in query
                         where service.RequesterIdNo == requesterIdNo

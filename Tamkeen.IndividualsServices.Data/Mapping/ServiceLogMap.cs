@@ -32,6 +32,14 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.HasRequired(t => t.Service)
                 .WithMany(t => t.ServiceLogs)
                 .HasForeignKey(d => d.ServiceId);
+
+            this.HasRequired(t => t.Laborer)
+                .WithMany(t => t.ServiceLogs)
+                .HasForeignKey(d => d.LaborerId);
+
+            this.HasRequired(t => t.Establishment)
+                .WithMany(t => t.ServiceLogs)
+                .HasForeignKey(d => d.EstablishmentId);
         }
     }
 }

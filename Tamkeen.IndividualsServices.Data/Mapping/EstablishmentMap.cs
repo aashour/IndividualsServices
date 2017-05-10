@@ -37,6 +37,9 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
                 .WithMany(t => t.Establishments)
                 .HasForeignKey(d => d.UnifiedNumberId);
 
+            this.HasRequired(t => t.LaborOffice)
+                .WithMany(t => t.Establishments)
+                .HasForeignKey(d => d.LaborOfficeId);
 
         }
     }

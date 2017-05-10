@@ -16,7 +16,7 @@ namespace Shared.Models
         public string ThirdName { get; set; }
         public string FourthName { get; set; }
         public int? LaborOfficeId { get; set; }
-        public int? NationalityId { get; set; }
+        public short? NationalityId { get; set; }
         public DateTime? BirthDate { get; set; }
         public int? TypeId { get; set; }
         public long? IdNumber { get; set; }
@@ -29,10 +29,10 @@ namespace Shared.Models
         public string MobileNumber { get; set; }
         public bool IsSystem { get; set; }
         public bool EmailVerified { get; set; }
-        public int EmailVerificationCount { get; set; }
+        public short EmailVerificationCount { get; set; }
         public System.DateTime? EmailLastVerificationDate { get; set; }
         public bool MobileVerified { get; set; }
-        public int MobileVerificationCount { get; set; }
+        public short MobileVerificationCount { get; set; }
         public System.DateTime? MobileLastVerificationDate { get; set; }
         public bool DataVerified { get; set; }
         public virtual UserType Type { get; set; }
