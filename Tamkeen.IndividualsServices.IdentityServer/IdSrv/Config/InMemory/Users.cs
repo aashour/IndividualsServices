@@ -23,7 +23,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv.Config.InMemory
                         new Claim(Constants.ClaimTypes.FamilyName, "family"),
                         new Claim(Constants.ClaimTypes.Role, "Role1"),
                         new Claim(Constants.ClaimTypes.Email, "email@email.com"),
-                        new Claim("iqama_number", "22337758"),
+                        new Claim("iqama_number", "2157433257"),
                         new Claim("birth_date", "01/10/1984 01:12:00 AM"),
                     }
                 },

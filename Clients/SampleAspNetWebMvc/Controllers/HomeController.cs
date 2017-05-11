@@ -49,6 +49,20 @@ namespace SampleAspNetWebMvc.Controllers
             return View();
         }
 
+        [Authorize]
+        public async Task<ActionResult> Runaway()
+        {
+            var token = (User as ClaimsPrincipal).FindFirst("access_token").Value;
+
+            var client = new HttpClient();
+            client.SetBearerToken(token);
+
+            //var result = await client.GetStringAsync($"https://localhost:44304/runaway/{ (User as ClaimsPrincipal).Claims.First(claim => claim.Type == "iqama_number").Value}");
+            var result = await client.GetStringAsync($"https://localhost:44304/runaway");
+            ViewBag.Json = JArray.Parse(result.ToString());
+
+            return View();
+        }
 
         public ActionResult Signout()
         {

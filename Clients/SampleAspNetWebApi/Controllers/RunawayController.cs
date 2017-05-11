@@ -1,11 +1,10 @@
-﻿using Shared.Data;
+﻿using IdentityModel.Client;
+using SampleAspNetWebApi.Extensions;
 using Shared.DataStructure;
 using Shared.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using Tamkeen.IndividualsServices.Services;
 
@@ -15,7 +14,7 @@ namespace SampleAspNetWebApi.Controllers
     public class RunawayController : ApiController
     {
         private readonly IServiceLogService _serviceLogService;
-        private static IPagedList<ServiceLog> logs = null;
+        private static IPagedList<Model.ServiceLog> logs = null;
 
         public RunawayController(IServiceLogService serviceLogService)
         {
@@ -25,10 +24,71 @@ namespace SampleAspNetWebApi.Controllers
 
         private void AllServiceLogs()
         {
-            var logs = this._serviceLogService.SearchServiceLog(pageIndex: 0, pageSize: 20);
+            logs = this._serviceLogService.SearchServiceLog(pageIndex: 0, pageSize: 20).ToModel();
 
             if (logs.Count > 0)
                 return;
+
+            FillServiceLog();
+
+        }
+
+        // GET: /Runaway/5
+        public IHttpActionResult Get(long id)
+        {
+            var result = this._serviceLogService.ServiceLogForLaborer(id).ToModel();
+            return Json(result);
+        }
+
+        // GET: /Runaway
+        public IHttpActionResult Get()
+        {
+            var caller = User as ClaimsPrincipal;
+            var claims = from c in (User as ClaimsPrincipal).Claims
+                         select new
+                         {
+                             type = c.Type,
+                             value = c.Value
+                         };
+            var subjectClaim = caller.FindFirst("iqama_number");
+            if (subjectClaim != null)
+            {
+                var result = this._serviceLogService.ServiceLogForLaborer(long.Parse(subjectClaim.Value)).ToModel();
+                return Json(result);
+            }
+            else
+            {
+                return Json("");
+            }
+        }
+
+        // POST: /Runaway
+        public void Post([FromBody]Model.ServiceLog log)
+        {
+            if (log != null)
+                logs.Add(log);
+        }
+
+        // PUT: /Runaway/5
+        public void Put(long id, [FromBody]ServiceLog log)
+        {
+            if (log != null)
+            {
+                var result = this._serviceLogService.ServiceLogForLaborer(id, 0, 10).FirstOrDefault();
+                if (result != null)
+                    result = log;
+            }
+        }
+
+        // DELETE: /Runaway/5
+        public void Delete(long id)
+        {
+            logs.Remove(logs.Where(log => log.Laborer.IdNo == id.ToString()).First());
+        }
+
+
+        private void FillServiceLog()
+        {
 
             Establishment est1 = new Establishment { Id = 1, Name = "منشأة 1", LaborOfficeId = 1, SequenceNumber = 233 };
             Establishment est2 = new Establishment { Id = 2, Name = "2 منشأة", LaborOfficeId = 1, SequenceNumber = 4536 };
@@ -225,44 +285,7 @@ namespace SampleAspNetWebApi.Controllers
             lst.Add(log6);
             lst.Add(log7);
 
-            logs = new PagedList<ServiceLog>(lst, 0, 10);
-        }
-
-        // GET: /Runaway/5
-        public IHttpActionResult Get(long id)
-        {
-            var result = logs.Where(log => log.Laborer.IdNo == id.ToString());
-            return Json(result);
-        }
-
-        // GET: /Runaway
-        public IHttpActionResult Get()
-        {
-            return Json(logs);
-        }
-
-        // POST: /Runaway
-        public void Post([FromBody]ServiceLog log)
-        {
-            if (log != null)
-                logs.Add(log);
-        }
-
-        // PUT: /Runaway/5
-        public void Put(long id, [FromBody]ServiceLog log)
-        {
-            if (log != null)
-            {
-                var result = this._serviceLogService.ServiceLogForLaborer(id, 0, 10).FirstOrDefault();
-                if (result != null)
-                    result = log;
-            }
-        }
-
-        // DELETE: /Runaway/5
-        public void Delete(long id)
-        {
-            logs.Remove(logs.Where(log => log.Laborer.IdNo == id.ToString()).First());
+            var logs = new PagedList<ServiceLog>(lst, 0, 10);
         }
     }
 }

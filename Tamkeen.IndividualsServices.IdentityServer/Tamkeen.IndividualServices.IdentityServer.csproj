@@ -196,9 +196,11 @@
     <Compile Include="IdSrv\Config\Certificate.cs" />
     <Compile Include="IdSrv\Config\Clients.cs" />
     <Compile Include="IdSrv\Config\InMemory\Users.cs" />
+    <Compile Include="IdSrv\Config\InMemory\UserService.cs" />
     <Compile Include="IdSrv\Config\Scopes.cs" />
     <Compile Include="IdSrv\Extensions.cs" />
     <Compile Include="IdSrv\Factory.cs" />
+    <Compile Include="IdSrv\Config\InMemory\ClaimsProvider.cs" />
     <Compile Include="IdSrv\MolUserService.cs" />
     <Compile Include="Migrations\ClientConfiguration\Configuration.cs" />
     <Compile Include="Migrations\OperationalConfiguration\Configuration.cs" />

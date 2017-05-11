@@ -11,6 +11,7 @@ using Tamkeen.IndividualServices.IdentityServer.IdSrv.Config;
 using Tamkeen.IndividualServices.IdentityServer.IdSrv.Config.InMemory;
 using IdentityServer3.Host.Config;
 using Microsoft.Owin.Security.Google;
+using IdentityServer3.Core.Services;
 
 namespace Tamkeen.IndividualServices.IdentityServer
 {
@@ -47,16 +48,21 @@ namespace Tamkeen.IndividualServices.IdentityServer
 
             app.Map("/core", idsrvApp =>
             {
+
+                var factory = new IdentityServerServiceFactory()
+                                .UseInMemoryClients(Clients.Get(false))
+                                .UseInMemoryScopes(Scopes.Get());
+
+                //factory.ClaimsProvider = new IdentityServer3.Core.Configuration.Registration<IdentityServer3.Core.Services.IClaimsProvider>(typeof(ClaimsProvider));
+                factory.UserService = new IdentityServer3.Core.Configuration.Registration<IUserService>(resolver => new UserService());
+
                 idsrvApp.UseIdentityServer(new IdentityServerOptions
                 {
                     SiteName = "IdentityServer3 - Individual services AspNetIdentity(in memory)",
                     RequireSsl = true,
                     SigningCertificate = Certificate.Get(),
 
-                    Factory = new IdentityServerServiceFactory()
-                                .UseInMemoryUsers(Users.Get())
-                                .UseInMemoryClients(Clients.Get(false))
-                                .UseInMemoryScopes(Scopes.Get()),
+                    Factory = factory,
 
                     AuthenticationOptions = new IdentityServer3.Core.Configuration.AuthenticationOptions
                     {

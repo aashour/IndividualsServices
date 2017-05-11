@@ -20,7 +20,8 @@ namespace Shared.Data
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as BaseEntity<T>);
+            return EqualityComparer<T>.Default.Equals(obj);
+            //return Equals(obj as BaseEntity<T>);
         }
 
         public bool Equals(T other)

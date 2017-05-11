@@ -50,7 +50,7 @@ namespace Tamkeen.IndividualsServices.Services
             }
 
             //paging
-            return new PagedList<ServiceLog>(query.ToList(), pageIndex, pageSize);
+            return new PagedList<ServiceLog>(query.OrderBy(x => x.Id), pageIndex, pageSize);
         }
 
         public IPagedList<ServiceLog> ServiceLogForLaborer(long laborerIdNo, int pageIndex = 0, int pageSize = int.MaxValue)
@@ -62,7 +62,7 @@ namespace Tamkeen.IndividualsServices.Services
                     select service;
 
             //paging
-            return new PagedList<ServiceLog>(query.ToList(), pageIndex, pageSize);
+            return new PagedList<ServiceLog>(query.OrderBy(x => x.Id), pageIndex, pageSize);
         }
     }
 }

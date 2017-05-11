@@ -29,6 +29,7 @@ namespace SampleAspNetWebMvc
             {
                 ClientId = "mvc.owin",
                 Authority = Shared.Constants.BaseAddress,
+                //MetadataAddress = $"{Shared.Constants.BaseAddress}/.well-known/jwks",
                 RedirectUri = Shared.Constants.ClientRedirectUri,
                 ResponseType = "code id_token",
                 Scope = "openid profile read write offline_access webApi",
@@ -74,6 +75,7 @@ namespace SampleAspNetWebMvc
                         id.AddClaim(new Claim("refresh_token", tokenResponse.RefreshToken));
                         id.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
                         id.AddClaim(new Claim("sid", n.AuthenticationTicket.Identity.FindFirst("sid").Value));
+                        id.AddClaim(new Claim("iqama_number", n.AuthenticationTicket.Identity.FindFirst("iqama_number").Value));
 
                         n.AuthenticationTicket = new AuthenticationTicket(
                             new ClaimsIdentity(id.Claims, n.AuthenticationTicket.Identity.AuthenticationType, "name", "role"),

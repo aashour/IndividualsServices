@@ -29,6 +29,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
         //    return Task.FromResult(0);
         //}
 
+
         protected override async Task<IEnumerable<System.Security.Claims.Claim>> GetClaimsFromAccount(MolUser user)
         {
             var claims = (await base.GetClaimsFromAccount(user)).ToList();
