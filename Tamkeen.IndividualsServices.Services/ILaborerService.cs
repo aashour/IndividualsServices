@@ -9,7 +9,7 @@ namespace Tamkeen.IndividualsServices.Services
 {
     public interface ILaborerService
     {
-        Laborer GetLaborerById(int laborerId);
+        Laborer GetLaborerById(long laborerId);
 
         IList<Laborer> GetLaborersByIds(long[] laborerIds);
 

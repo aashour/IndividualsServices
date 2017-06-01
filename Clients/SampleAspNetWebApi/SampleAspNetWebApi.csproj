@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IdentityController.cs" />
+    <Compile Include="Controllers\LaborerController.cs" />
     <Compile Include="Controllers\RunawayController.cs" />
     <Compile Include="Controllers\SponsorTransferController.cs" />
     <Compile Include="Controllers\TestController.cs" />

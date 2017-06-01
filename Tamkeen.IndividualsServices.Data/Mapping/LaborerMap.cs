@@ -53,11 +53,18 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.Property(t => t.EstablishmentId).HasColumnName("FK_EstablishmentId");
             this.Property(t => t.StatusId).HasColumnName("FK_LaborerStatusId");
             this.Property(t => t.BorderNo).HasColumnName("BorderNo");
+            this.Property(t => t.YearOfBirth).HasColumnName("YearOfBirth");
+            this.Property(t => t.GenderId).HasColumnName("FK_GenderId");
+            this.Property(t => t.LastWPExpirationDate).HasColumnName("LastWPExpirationDate");
+            this.Property(t => t.PassportNo).HasColumnName("PassportNo");
+            this.Property(t => t.ServiceStartDate).HasColumnName("ServiceStartDate");
+            this.Property(t => t.ServiceEndDate).HasColumnName("ServiceEndDate");
+            this.Property(t => t.LaborerStatusModificationDate).HasColumnName("LaborerStatusModificationDate");
 
             // Relationships
-            //this.HasRequired(t => t.Gender)
-            //    .WithMany(t => t.Laborer)
-            //    .HasForeignKey(d => d.GenderId);
+            this.HasRequired(t => t.Gender)
+                .WithMany(t => t.Laborers)
+                .HasForeignKey(d => d.GenderId);
             this.HasOptional(t => t.Status)
                 .WithMany(t => t.Laborers)
                 .HasForeignKey(d => d.StatusId);

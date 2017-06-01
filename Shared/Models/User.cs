@@ -39,6 +39,7 @@ namespace Shared.Models
         public virtual LaborOffice LaborOffice { get; set; }
         public virtual Nationality Nationality { get; set; }
         public virtual ICollection<OracleTransactionLog> OracleTransactionLogs { get; set; } = new List<OracleTransactionLog>();
-        public virtual ICollection<ServiceLog> ServiceLogs { get; set; } = new List<ServiceLog>();
+        //public virtual ICollection<RunawayRequest> RunawayRequests { get; set; } = new List<RunawayRequest>();
+        public ICollection<ServiceLog> ServiceLogs { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.Property(t => t.EstablishmentId).HasColumnName("FK_EstablishmentID");
             this.Property(t => t.LaborerId).HasColumnName("FK_LaborerID");
             this.Property(t => t.UserId).HasColumnName("CreatedByUserID");
+            this.Property(t => t.CreationDate).HasColumnName("CreationDate");
 
             this.HasRequired(t => t.Requester)
                 .WithMany(t => t.ServiceLogs)

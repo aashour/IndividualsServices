@@ -20,29 +20,9 @@ namespace Tamkeen.IndividualsServices.Data
         public IndividualsServicesObjectContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-            //((IObjectContextAdapter)this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
-            //Database.SetInitializer<AjeerObjectContext>(new CreateDatabaseIfNotExists<AjeerObjectContext>());
-            ((IObjectContextAdapter)this).ObjectContext.SavingChanges += ObjectContext_SavingChanges;
             Database.Log = msg => Trace.WriteLine(msg);
         }
 
-        void ObjectContext_SavingChanges(object sender, EventArgs e)
-        {
-            //ObjectContext context = sender as ObjectContext;
-            //if (context != null)
-            //{
-            //    // You can use other EntityState constants here
-            //    foreach (ObjectStateEntry entry in context.ObjectStateManager.GetObjectStateEntries(EntityState.Added | EntityState.Modified))
-            //    {
-            //        // You can handle multiple Entity Types here. I use Student as an example for the sake of simplicity
-            //        if (null != entry.Entity && entry.Entity.GetType().BaseType == typeof(BaseEntity))
-            //        {
-            //            if ((entry.Entity as BaseEntity).CreatedOnUtc == null || (entry.Entity as BaseEntity).CreatedOnUtc == DateTime.MinValue)
-            //                (entry.Entity as BaseEntity).CreatedOnUtc = DateTime.Now;
-            //        }
-            //    }
-            //}
-        }
 
         #endregion
 

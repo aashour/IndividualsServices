@@ -14,5 +14,6 @@ namespace Shared.Models
         public string JobCode { get; set; }
 
         public virtual ICollection<Laborer> Laborers { get; set; } = new List<Laborer>();
+        public string Description { get; set; }
     }
 }

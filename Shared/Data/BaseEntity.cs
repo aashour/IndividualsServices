@@ -10,7 +10,7 @@ namespace Shared.Data
     /// <summary>
     /// Base class for entities
     /// </summary>
-    public abstract partial class BaseEntity<T> : IEquatable<T>
+    public abstract partial class BaseEntity<T>
     {
         /// <summary>
         /// Gets or sets the entity identifier
@@ -22,11 +22,6 @@ namespace Shared.Data
         {
             return EqualityComparer<T>.Default.Equals(obj);
             //return Equals(obj as BaseEntity<T>);
-        }
-
-        public bool Equals(T other)
-        {
-            return Equals(Id, other);
         }
 
         public virtual bool Equals(BaseEntity<T> other)
@@ -59,7 +54,7 @@ namespace Shared.Data
 
         public static bool operator ==(BaseEntity<T> x, BaseEntity<T> y)
         {
-            return x.Equals(x);
+            return Equals(x, y);
         }
 
         public static bool operator !=(BaseEntity<T> x, BaseEntity<T> y)
