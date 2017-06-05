@@ -1,0 +1,34 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:6604/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      //"launchUrl": "api/Laborer/GetByIdNumber/2304137108",
+      //"launchUrl": "api/Establishment/1152141",
+      //"launchUrl": "api/runaway/GetByIdNumber/2312345339",
+      "launchUrl": "RunawayComplaint.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Tamkeen.IndividualsServices.WebAPIs": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      //"launchUrl": "api/Laborer/GetByIdNumber/2304137108",
+      //"launchUrl": "api/runaway/GetByIdNumber/2312345339",
+      "launchUrl": "RunawayComplaint.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:6605"
+    }
+  }
+}

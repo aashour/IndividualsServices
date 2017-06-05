@@ -32,8 +32,17 @@ namespace Shared.Models
         public virtual LaborOffice LaborOffice { get; set; }
         public virtual LaborerType Type { get; set; }
         //public virtual ICollection<TransferRequest> TransferRequests { get; set; } = new List<TransferRequest>();
-        public virtual ICollection<ServiceLog> ServiceLogs { get; set; } = new List<ServiceLog>();
-        public virtual ICollection<OracleTransactionLog> SponsoTransferRequests { get; set; } = new List<OracleTransactionLog>();
 
+        public virtual ICollection<OracleTransactionLog> SponsorTransferRequests { get; set; } = new List<OracleTransactionLog>();
+        public int YearOfBirth { get; set; }
+        public int GenderId { get; set; }
+        public virtual Gender Gender { get; set; }
+        public DateTime? LastWPExpirationDate { get; set; }
+        public string PassportNo { get; set; }
+        public DateTime ServiceStartDate { get; set; }
+        public DateTime? ServiceEndDate { get; set; }
+        public DateTime? LaborerStatusModificationDate { get; set; }
+        //public ICollection<RunawayRequest> RunawayRequests { get; set; }
+        public ICollection<ServiceLog> ServiceLogs { get; set; }
     }
 }

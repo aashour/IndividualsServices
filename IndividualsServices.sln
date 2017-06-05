@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Services", "Tamkeen.IndividualsServices.Services\Tamkeen.IndividualsServices.Services.csproj", "{4B15618E-7EA7-452B-9208-02CBF38CBCD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.WebAPIs", "Tamkeen.IndividualsServices.WebAPIs\Tamkeen.IndividualsServices.WebAPIs.csproj", "{2BA4E324-AEA1-4108-A623-53082B7683E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B15618E-7EA7-452B-9208-02CBF38CBCD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA4E324-AEA1-4108-A623-53082B7683E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA4E324-AEA1-4108-A623-53082B7683E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA4E324-AEA1-4108-A623-53082B7683E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA4E324-AEA1-4108-A623-53082B7683E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +72,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1} = {6975D09C-E080-4996-890D-64DFCF44B126}
-		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{1DF8470F-D921-417F-B052-3EDF1777A3C8} = {6975D09C-E080-4996-890D-64DFCF44B126}
 	EndGlobalSection
 EndGlobal

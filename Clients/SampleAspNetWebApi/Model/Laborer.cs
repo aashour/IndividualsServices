@@ -1,14 +1,24 @@
-﻿namespace SampleAspNetWebApi.Model
+﻿using System;
+
+namespace SampleAspNetWebApi.Model
 {
     public class Laborer
     {
-        public int LaborOfficeId { get; set; }
-        public int SaudiFlagId { get; set; }
-        public long SequenceNumber { get; set; }
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
-        public string ThirdName { get; set; }
-        public string FourthName { get; set; }
-        public string IdNo { get; set; }
+        public string IdNumber { get; set; }
+        public string Number { get; set; }
+        public string Name { get; set; }
+        public DateTime? IdExpirationDate { get; set; }
+        public int YearOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string Nationality { get; set; }
+        public string PassportNumber { get; set; }
+        public string Job { get; set; }
+        public string MobileNumber { get; set; }
+        public string Email { get; set; }
+        public string Status { get; set; }
+        public DateTime? StatusModificationDate { get; set; }
+        public DateTime ServiceStartDate { get; set; }
+        public long EstablishmentId { get; set; }
     }
+
 }

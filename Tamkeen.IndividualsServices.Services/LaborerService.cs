@@ -21,10 +21,11 @@ namespace Tamkeen.IndividualsServices.Services
             var query = from laborer in _laborerRepository.Table
                         where laborer.BorderNo.Equals(borderNumber, StringComparison.InvariantCultureIgnoreCase)
                         select laborer;
+
             return query.FirstOrDefault();
         }
 
-        public Laborer GetLaborerById(int laborerId)
+        public Laborer GetLaborerById(long laborerId)
         {
             return _laborerRepository.GetById(laborerId);
         }
@@ -34,6 +35,7 @@ namespace Tamkeen.IndividualsServices.Services
             var query = from laborer in _laborerRepository.Table
                         where laborer.IdNo.Equals(idNumber, StringComparison.InvariantCultureIgnoreCase)
                         select laborer;
+            
             return query.FirstOrDefault();
         }
 
@@ -45,9 +47,11 @@ namespace Tamkeen.IndividualsServices.Services
             var query = from l in _laborerRepository.Table
                         where laborerIdNumbers.Contains(l.IdNo)
                         select l;
+
             var laborers = query.ToList();
             //sort by passed identifiers
             var sortedLaborers = new List<Laborer>();
+
             foreach (string idNumber in laborerIdNumbers)
             {
                 var laborer = laborers.Find(x => x.IdNo == idNumber);
@@ -56,6 +60,7 @@ namespace Tamkeen.IndividualsServices.Services
                 else
                     sortedLaborers.Add(new Laborer { IdNo = idNumber });
             }
+
             return sortedLaborers;
         }
 
@@ -67,6 +72,7 @@ namespace Tamkeen.IndividualsServices.Services
             var query = from p in _laborerRepository.Table
                         where laborerIds.Contains(p.Id)
                         select p;
+
             var laborers = query.ToList();
             //sort by passed identifiers
             var sortedLaborers = new List<Laborer>();
@@ -76,6 +82,7 @@ namespace Tamkeen.IndividualsServices.Services
                 if (laborer != null)
                     sortedLaborers.Add(laborer);
             }
+
             return sortedLaborers;
         }
     }

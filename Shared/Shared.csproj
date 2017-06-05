@@ -232,10 +232,15 @@
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
     <Compile Include="Extensions\ApplicationBuilderExtensions.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
+	    <Compile Include="Models\LaborerStatusList.cs" />
+    <Compile Include="Models\EconomicActivity.cs" />
     <Compile Include="Models\AttachmentSettings.cs" />
     <Compile Include="Models\Establishment.cs" />
     <Compile Include="Models\EstablishmentStatus.cs" />
     <Compile Include="Models\EstablishmentType.cs" />
+    <Compile Include="Models\EstablishmentKPI.cs" />
+    <Compile Include="Models\EstablishmentTypeList.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Laborer.cs" />
     <Compile Include="Models\LaborerStatus.cs" />
@@ -244,14 +249,19 @@
     <Compile Include="Models\Nationality.cs" />
     <Compile Include="Models\OracleTransactionLog.cs" />
     <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\RunawayComplaint.cs" />
+    <Compile Include="Models\RunawayComplaintStatusList.cs" />
     <Compile Include="Models\SaudiFlag.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceList.cs" />
     <Compile Include="Models\ServiceLog.cs" />
     <Compile Include="Models\Setting.cs" />
     <Compile Include="Models\SponsorTransferRequest.cs" />
     <Compile Include="Models\UnifiedNumber.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserEstablishment.cs" />
     <Compile Include="Models\UserType.cs" />
+    <Compile Include="Models\WaselAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

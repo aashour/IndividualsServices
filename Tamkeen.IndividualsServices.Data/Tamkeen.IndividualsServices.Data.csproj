@@ -68,9 +68,11 @@
     <Compile Include="IDbContext.cs" />
     <Compile Include="IndividualsServicesObjectContext.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
+    <Compile Include="Mapping\EconomicActivityMap.cs" />
     <Compile Include="Mapping\EstablishmentMap.cs" />
     <Compile Include="Mapping\EstablishmentStatusMap.cs" />
     <Compile Include="Mapping\EstablishmentTypeMap.cs" />
+    <Compile Include="Mapping\GenderMap.cs" />
     <Compile Include="Mapping\JobMap.cs" />
     <Compile Include="Mapping\LaborerMap.cs" />
     <Compile Include="Mapping\LaborerStatusMap.cs" />
@@ -80,9 +82,11 @@
     <Compile Include="Mapping\OracleTransactionLogMap.cs" />
     <Compile Include="Mapping\OwnerMap.cs" />
     <Compile Include="Mapping\SaudiFlagMap.cs" />
+    <Compile Include="Mapping\RunawayComplaintMap.cs" />
     <Compile Include="Mapping\ServiceLogMap.cs" />
     <Compile Include="Mapping\ServiceMap.cs" />
     <Compile Include="Mapping\UnifiedNumberMap.cs" />
+    <Compile Include="Mapping\UserEstablishmentMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Mapping\UserTypeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

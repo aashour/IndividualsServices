@@ -63,7 +63,7 @@ namespace IdentityServer3.Host.Config
                     Enabled = true,
                     AccessTokenType = AccessTokenType.Reference,
 
-                    Flow = Flows.ClientCredentials,
+                    Flow = Flows.Hybrid,
 
                     ClientSecrets = new List<Secret>
                     {
@@ -72,6 +72,7 @@ namespace IdentityServer3.Host.Config
 
                     AllowedScopes = new List<string>
                     {
+                        Constants.StandardScopes.Profile,
                         "webApi"
                     }
                 },
@@ -93,6 +94,7 @@ namespace IdentityServer3.Host.Config
 
                     AllowedScopes = new List<string>
                     {
+                        Constants.StandardScopes.Profile,
                         "webApi"
                     }
                 }

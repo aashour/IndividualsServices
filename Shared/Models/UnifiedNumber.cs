@@ -11,7 +11,7 @@ namespace Shared.Models
     {
         public int LaborOfficeId { get; set; }
         public long SequenceNumber { get; set; }
-        public long SevenHundredNumber { get; set; }
+        public string SevenHundredNumber { get; set; }
 
         public long? OwnerId { get; set; }
 

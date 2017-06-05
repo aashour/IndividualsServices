@@ -18,5 +18,7 @@ namespace Shared.Models
         public virtual Laborer Laborer { get; set; }
         public virtual User Requester { get; set; }
         public virtual Service Service { get; set; }
+        public DateTime CreationDate { get; set; }
+        public virtual ICollection<RunawayComplaint> RunawayComplaints { get; set; }
     }
 }

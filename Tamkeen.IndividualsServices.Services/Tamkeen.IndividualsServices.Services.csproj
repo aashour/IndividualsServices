@@ -32,6 +32,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,13 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\NitaqatServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EstablishmentService.cs" />
+    <Compile Include="IEstablishmentService.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />
     <Compile Include="Configuration\SettingService.cs" />
     <Compile Include="ILaborerService.cs" />
+    <Compile Include="INitaqatService.cs" />
+    <Compile Include="IRunawayService.cs" />
     <Compile Include="IServiceLogService.cs" />
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="LaborerService.cs" />
+    <Compile Include="Models\RunawayCancellationReasonList.cs" />
+    <Compile Include="Models\RunawayRequest.cs" />
+    <Compile Include="Models\RunawayRequestStatusList.cs" />
+    <Compile Include="NitaqatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunawayService.cs" />
     <Compile Include="ServiceLogService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +78,41 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\NitaqatServiceReference\EstablishmentKPIWebService.wsdl" />
+    <None Include="Connected Services\NitaqatServiceReference\Tamkeen.IndividualsServices.Services.NitaqatServiceReference.CheckQuotaForVerySmallEntitiesForTargetColor1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NitaqatServiceReference\Tamkeen.IndividualsServices.Services.NitaqatServiceReference.CheckQuotaForWhiteEstablishmentForTargetColor1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NitaqatServiceReference\Tamkeen.IndividualsServices.Services.NitaqatServiceReference.GetEWVAutoApprovalQuotaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NitaqatServiceReference\Tamkeen.IndividualsServices.Services.NitaqatServiceReference.ImmediateApproveQuotaInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\NitaqatServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NitaqatServiceReference\EstablishmentKPIWebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NitaqatServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NitaqatServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NitaqatServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

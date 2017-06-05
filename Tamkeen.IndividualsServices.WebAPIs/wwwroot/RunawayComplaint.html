@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        .row {
+            width: 400px;
+            display: block;
+        }
+
+        .label {
+            width: 150px;
+            display: inline-table
+        }
+
+        .input {
+            width: 150px;
+            display: inline-table
+        }
+
+        .alternate {
+            background-color: lightgray
+        }
+    </style>
+</head>
+<body>
+    <form action="api/RunawayComplaint" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="label">Id Number </div><div class="input">
+                <input name="idNumber" value="22215525" />
+            </div>
+        </div>
+        <div class="row alternate">
+            <div class="label">Mobile </div><div class="input">
+                <input name="mobile" value="056555555" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">Email </div><div class="input">
+                <input name="email" value="someone@somewhare.com" />
+            </div>
+        </div>
+        <div class="row alternate">
+            <div class="label">Request Number </div><div class="input">
+                <input name="requestNumber" value="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">Reason</div>
+            <div class="input">
+                <textarea name="reason" value=""></textarea>
+            </div>
+        </div>
+        <div class="row alternate">
+            <div class="label">Attachments</div>
+            <div class="input">
+                <input name="somefile" type="file" /><br />
+                <input name="somefile" type="file" /><br />
+                <input name="somefile" type="file" />
+            </div>
+        </div>
+
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
