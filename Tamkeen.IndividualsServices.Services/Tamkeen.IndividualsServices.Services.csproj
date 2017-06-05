@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\SettingExtensions.cs" />
+    <Compile Include="Configuration\SettingService.cs" />
     <Compile Include="ILaborerService.cs" />
     <Compile Include="IServiceLogService.cs" />
+    <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="LaborerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLogService.cs" />
@@ -55,6 +58,9 @@
       <Project>{dedd561c-740b-4daa-b77a-b22355eb006f}</Project>
       <Name>Tamkeen.IndividualsServices.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

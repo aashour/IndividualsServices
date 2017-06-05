@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.PlatformAbstractions;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web;
@@ -40,23 +41,15 @@ namespace Shared.Infrastructure
         /// <returns>The physical path. E.g. "c:\inetpub\wwwroot\bin"</returns>
         public virtual string GetBinDirectory()
         {
-            if (HostingEnvironment.IsHosted)
-            {
-                //hosted
-                return HttpRuntime.BinDirectory;
-            }
-
-            //not hosted. For example, run either in unit tests
-            return AppDomain.CurrentDomain.BaseDirectory;
+            return PlatformServices.Default.Application.ApplicationBasePath;
         }
 
         public override IList<Assembly> GetAssemblies()
         {
-            if (this.EnsureBinFolderAssembliesLoaded && !_binFolderAssembliesLoaded)
+            if (EnsureBinFolderAssembliesLoaded && !_binFolderAssembliesLoaded)
             {
                 _binFolderAssembliesLoaded = true;
                 string binPath = GetBinDirectory();
-                //binPath = _webHelper.MapPath("~/bin");
                 LoadMatchingAssemblies(binPath);
             }
 
