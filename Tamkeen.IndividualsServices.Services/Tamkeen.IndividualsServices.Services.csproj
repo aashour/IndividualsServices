@@ -51,10 +51,13 @@
     </Compile>
     <Compile Include="EstablishmentService.cs" />
     <Compile Include="IEstablishmentService.cs" />
+    <Compile Include="Configuration\SettingExtensions.cs" />
+    <Compile Include="Configuration\SettingService.cs" />
     <Compile Include="ILaborerService.cs" />
     <Compile Include="INitaqatService.cs" />
     <Compile Include="IRunawayService.cs" />
     <Compile Include="IServiceLogService.cs" />
+    <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="ISponsorTransferService.cs" />
     <Compile Include="LaborerService.cs" />
     <Compile Include="Models\RunawayCancellationReasonList.cs" />

@@ -39,7 +39,7 @@ namespace SampleAspNetWebMvc
                     NameClaimType = "name",
                     RoleClaimType = "role"
                 },
-
+                
                 UseTokenLifetime = false,
                 SignInAsAuthenticationType = "Cookies",
 

@@ -9,7 +9,8 @@ namespace Tamkeen.IndividualsServices.Data
 {
     public partial class EfDataProviderManager : BaseDataProviderManager
     {
-        public EfDataProviderManager(DataSettings settings) : base(settings)
+        public EfDataProviderManager(DataSettings settings)
+            : base(settings)
         {
         }
 
