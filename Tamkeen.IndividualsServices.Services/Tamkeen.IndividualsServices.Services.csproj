@@ -55,14 +55,18 @@
     <Compile Include="INitaqatService.cs" />
     <Compile Include="IRunawayService.cs" />
     <Compile Include="IServiceLogService.cs" />
+    <Compile Include="ISponsorTransferService.cs" />
     <Compile Include="LaborerService.cs" />
     <Compile Include="Models\RunawayCancellationReasonList.cs" />
     <Compile Include="Models\RunawayRequest.cs" />
     <Compile Include="Models\RunawayRequestStatusList.cs" />
     <Compile Include="NitaqatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Exceptions\RequestNotFoundException.cs" />
     <Compile Include="RunawayService.cs" />
     <Compile Include="ServiceLogService.cs" />
+    <Compile Include="SponsorTransferService.cs" />
+    <Compile Include="Exceptions\UserNotAuthorizedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj">
@@ -111,5 +115,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

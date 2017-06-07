@@ -152,6 +152,7 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Extensions
         }
         #endregion
 
+        #region Runaway Request
         public static IEnumerable<RunawayRequestDto> ToDto(this IEnumerable<RunawayRequest> runawayRequests)
         {
             return runawayRequests.Select(item => item.ToDto()).ToList();
@@ -174,20 +175,63 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Extensions
                 RunawayComplaintRequests = runawayRequest.RunawayComplaints?.ToDto()
             };
         }
+        #endregion
 
+        #region Runaway Complaints
         public static IEnumerable<RunawayComplaintDto> ToDto(this IEnumerable<RunawayComplaint> runawayComplaints)
         {
-            return runawayComplaints.Select(item => new RunawayComplaintDto
-            {
-                ComplaintDate = item.ComplaintDate,
-                DecisionDate = item.DecisionDate,
-                EstablishmentName = item.Establishment.Name,
-                Id = item.Id,
-                Reason = item.Reason,
-                RejectReason = item.RejectReason,
-                Status = ((RunawayComplaintStatusList)item.StatusId).ToString(),
-                StatusId = item.StatusId
-            }).ToList();
+            return runawayComplaints.Select(c => c.ToDto()).ToList();
         }
+
+        public static RunawayComplaintDto ToDto(this RunawayComplaint runawayComplaint)
+        {
+            return new RunawayComplaintDto
+            {
+                ComplaintDate = runawayComplaint.ComplaintDate,
+                DecisionDate = runawayComplaint.DecisionDate,
+                EstablishmentName = runawayComplaint.Establishment.Name,
+                Id = runawayComplaint.Id,
+                Reason = runawayComplaint.Reason,
+                RejectReason = runawayComplaint.RejectReason,
+                Status = ((RunawayComplaintStatusList)runawayComplaint.StatusId).ToString(),
+                StatusId = runawayComplaint.StatusId
+            };
+        }
+        #endregion
+
+        #region Sponsor Transfer
+        public static SponsorTransferRequestDto ToDto(this SponsorTransferRequest sponsorTransferRequest)
+        {
+            return new SponsorTransferRequestDto
+            {
+                NewEstablishment = new SponsorTransferEstablishmentDto
+                {
+                    LaborOfficeId = sponsorTransferRequest.NewEstablishmentLaborOfficeId,
+                    SequenceNumber = sponsorTransferRequest.NewEstablishmentSequenceNumber,
+                    Name = sponsorTransferRequest.NewEstablishmentName
+                },
+                Number = new SponsorTransferRequestNumberDto
+                {
+                    LaborOfficeId = sponsorTransferRequest.LaborOfficeId,
+                    SequenceNumber = sponsorTransferRequest.SeqeunceNumber,
+                    Year = sponsorTransferRequest.Year
+                },
+                OldEstablishment = new SponsorTransferEstablishmentDto
+                {
+                    LaborOfficeId = sponsorTransferRequest.OldEstablishmentLaborOfficeId,
+                    SequenceNumber = sponsorTransferRequest.OldEstablishmentSequenceNumber,
+                    Name = sponsorTransferRequest.OldEstablishmentName
+                },
+                ReqeustDate = sponsorTransferRequest.RequestDate,
+                StatusId = (int)sponsorTransferRequest.Status,
+                Status = sponsorTransferRequest.Status.ToString()
+            };
+        }
+
+        public static IEnumerable<SponsorTransferRequestDto> ToDto(this IEnumerable<SponsorTransferRequest> sponsorTransferRequests)
+        {
+            return sponsorTransferRequests.Select(r => r.ToDto()).ToList();
+        }
+        #endregion
     }
 }

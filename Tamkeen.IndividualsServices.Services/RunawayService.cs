@@ -13,10 +13,12 @@ namespace Tamkeen.IndividualsServices.Services
     public class RunawayService : IRunawayService
     {
         private readonly IRepository<ServiceLog, int> _serviceLogRepository;
+        private readonly IRepository<RunawayComplaint, int> _runawayComplaintRepository;
 
-        public RunawayService(IRepository<ServiceLog, int> serviceLogRepository)
+        public RunawayService(IRepository<ServiceLog, int> serviceLogRepository, IRepository<RunawayComplaint, int> runawayComplaintRepository)
         {
             _serviceLogRepository = serviceLogRepository;
+            _runawayComplaintRepository = runawayComplaintRepository;
         }
         public IEnumerable<RunawayRequest> GetRunawayRequestByIdNumber(string idNumber)
         {
@@ -91,13 +93,9 @@ namespace Tamkeen.IndividualsServices.Services
 
         public RunawayRequest GetRunawayRequestById(int runawayRequestId)
         {
-            var query = from serviceLog in _serviceLogRepository.Table
-                        where serviceLog.Id == runawayRequestId
-                        select serviceLog;
+            var runawayRequest = _serviceLogRepository.Table.Where(s=>s.Id== runawayRequestId).SingleOrDefault();
 
-            var runawayRequest = query.SingleOrDefault();
-
-            if (runawayRequest!= null)
+            if (runawayRequest != null)
             {
                 return MapRunawayRequest(runawayRequest);
             }
@@ -105,6 +103,11 @@ namespace Tamkeen.IndividualsServices.Services
             {
                 return null;
             }
+        }
+
+        public RunawayComplaint GetRunawayComplaintById(int complaintId)
+        {
+            return _runawayComplaintRepository.Table.Where(c => c.Id == complaintId).SingleOrDefault();
         }
     }
 }

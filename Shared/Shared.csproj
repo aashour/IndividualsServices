@@ -78,6 +78,7 @@
     <Compile Include="Data\DataSettings.cs" />
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
+    <Compile Include="Data\IOracleRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Models\ServiceList.cs" />
     <Compile Include="Models\ServiceLog.cs" />
     <Compile Include="Models\SponsorTransferRequest.cs" />
+    <Compile Include="Models\SponsorTransferRequestStatusList.cs" />
     <Compile Include="Models\UnifiedNumber.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserEstablishment.cs" />

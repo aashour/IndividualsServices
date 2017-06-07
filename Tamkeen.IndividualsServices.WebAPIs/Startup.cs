@@ -35,16 +35,22 @@ namespace Tamkeen.IndividualsServices.WebAPIs
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IRepository<UserEstablishment, long>, EfRepository<UserEstablishment, long>>();
             services.AddTransient<IDbContext>(context => new IndividualsServicesObjectContext(Configuration["mol:connectionstring"]));
+
+            // TODO : Revisit
+            services.AddTransient<IOracleRepository>(item => new OracleRepository(Configuration["oracle:connectionstring"], Configuration["oracle:schema"]));
+
+            services.AddTransient<IRepository<UserEstablishment, long>, EfRepository<UserEstablishment, long>>();
             services.AddTransient<IRepository<Laborer, long>, EfRepository<Laborer, long>>();
             services.AddTransient<IRepository<Establishment, long>, EfRepository<Establishment, long>>();
             services.AddTransient<IRepository<ServiceLog, int>, EfRepository<ServiceLog, int>>();
+            services.AddTransient<IRepository<RunawayComplaint, int>, EfRepository<RunawayComplaint, int>>();
 
             services.AddTransient<INitaqatService, NitaqatService>();
             services.AddTransient<ILaborerService, LaborerService>();
             services.AddTransient<IEstablishmentService, EstablishmentService>();
             services.AddTransient<IRunawayService, RunawayService>();
+            services.AddTransient<ISponsorTransferService, SponsorTransferService>();
 
         }
 
