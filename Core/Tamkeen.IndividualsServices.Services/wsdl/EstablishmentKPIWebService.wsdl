@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetEstablishmentQuota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentQuotaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentQuotaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentColor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentColorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentColorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntitySaudiLaborersCountByEstablishmentNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntitySaudiLaborersCountByEstablishmentNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEntitySaudiLaborersCountByEstablishmentNumberResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentExcellentLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentExcellentLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentExcellentLimitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentHighGreenLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentHighGreenLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentHighGreenLimitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEWVAutoApprovalQuota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEWVAutoApprovalQuotaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEWVAutoApprovalQuotaResult" type="tns:ImmediateApproveQuotaInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ImmediateApproveQuotaInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AutoApprovalQuota" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowedNitaqLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnusedVISACredit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinimumForeigners" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEstablishmentMediumGreenLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentMediumGreenLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentMediumGreenLimitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentLowGreenLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentLowGreenLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentLowGreenLimitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentYellowLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentYellowLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentYellowLimitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompansationVisasForEstablishment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompansationVisasForEstablishmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCompansationVisasForEstablishmentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompansationVisasForEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompansationVisasForEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCompansationVisasForEntityResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentPendingUnUsedVisas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstablishmentPendingUnUsedVisasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEstablishmentPendingUnUsedVisasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityPendingUnUsedVisas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityPendingUnUsedVisasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEntityPendingUnUsedVisasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForVerySmallEntities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedQuota" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForVerySmallEntitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckQuotaForVerySmallEntitiesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForVerySmallEntitiesForTargetColor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedQuota" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="targetColorId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForVerySmallEntitiesForTargetColorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckQuotaForVerySmallEntitiesForTargetColorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForWhiteEstablishment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedQuota" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForWhiteEstablishmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckQuotaForWhiteEstablishmentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForWhiteEstablishmentForTargetColor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestedQuota" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="targetColorId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckQuotaForWhiteEstablishmentForTargetColorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckQuotaForWhiteEstablishmentForTargetColorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityCurrentTotalNumberofLaborers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityCurrentTotalNumberofLaborersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEntityCurrentTotalNumberofLaborersResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityUnUsedVisas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEntityUnUsedVisasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEntityUnUsedVisasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateEstablishmentEntityHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="laborOfficeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNumber" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateEstablishmentEntityHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateEstablishmentEntityHistoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEstablishmentQuotaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentQuota" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentQuotaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentQuotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentColorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentColor" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentColorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEntitySaudiLaborersCountByEstablishmentNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEntitySaudiLaborersCountByEstablishmentNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetEntitySaudiLaborersCountByEstablishmentNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEntitySaudiLaborersCountByEstablishmentNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentExcellentLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentExcellentLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentExcellentLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentExcellentLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentHighGreenLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentHighGreenLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentHighGreenLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentHighGreenLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEWVAutoApprovalQuotaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEWVAutoApprovalQuota" />
+  </wsdl:message>
+  <wsdl:message name="GetEWVAutoApprovalQuotaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEWVAutoApprovalQuotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentMediumGreenLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentMediumGreenLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentMediumGreenLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentMediumGreenLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentLowGreenLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentLowGreenLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentLowGreenLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentLowGreenLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentYellowLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentYellowLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentYellowLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentYellowLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompansationVisasForEstablishmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompansationVisasForEstablishment" />
+  </wsdl:message>
+  <wsdl:message name="GetCompansationVisasForEstablishmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompansationVisasForEstablishmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompansationVisasForEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompansationVisasForEntity" />
+  </wsdl:message>
+  <wsdl:message name="GetCompansationVisasForEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompansationVisasForEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentPendingUnUsedVisasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentPendingUnUsedVisas" />
+  </wsdl:message>
+  <wsdl:message name="GetEstablishmentPendingUnUsedVisasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstablishmentPendingUnUsedVisasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityPendingUnUsedVisasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEntityPendingUnUsedVisas" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityPendingUnUsedVisasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEntityPendingUnUsedVisasResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForVerySmallEntitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForVerySmallEntities" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForVerySmallEntitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForVerySmallEntitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForVerySmallEntitiesForTargetColorSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForVerySmallEntitiesForTargetColor" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForVerySmallEntitiesForTargetColorSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForVerySmallEntitiesForTargetColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForWhiteEstablishmentSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForWhiteEstablishment" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForWhiteEstablishmentSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForWhiteEstablishmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForWhiteEstablishmentForTargetColorSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForWhiteEstablishmentForTargetColor" />
+  </wsdl:message>
+  <wsdl:message name="CheckQuotaForWhiteEstablishmentForTargetColorSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckQuotaForWhiteEstablishmentForTargetColorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityCurrentTotalNumberofLaborersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEntityCurrentTotalNumberofLaborers" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityCurrentTotalNumberofLaborersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEntityCurrentTotalNumberofLaborersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityUnUsedVisasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEntityUnUsedVisas" />
+  </wsdl:message>
+  <wsdl:message name="GetEntityUnUsedVisasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEntityUnUsedVisasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateEstablishmentEntityHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateEstablishmentEntityHistory" />
+  </wsdl:message>
+  <wsdl:message name="ValidateEstablishmentEntityHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateEstablishmentEntityHistoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EstablishmentKPIWebServiceSoap">
+    <wsdl:operation name="GetEstablishmentQuota">
+      <wsdl:input message="tns:GetEstablishmentQuotaSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentQuotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentColor">
+      <wsdl:input message="tns:GetEstablishmentColorSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentColorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntitySaudiLaborersCountByEstablishmentNumber">
+      <wsdl:input message="tns:GetEntitySaudiLaborersCountByEstablishmentNumberSoapIn" />
+      <wsdl:output message="tns:GetEntitySaudiLaborersCountByEstablishmentNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentExcellentLimit">
+      <wsdl:input message="tns:GetEstablishmentExcellentLimitSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentExcellentLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentHighGreenLimit">
+      <wsdl:input message="tns:GetEstablishmentHighGreenLimitSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentHighGreenLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEWVAutoApprovalQuota">
+      <wsdl:input message="tns:GetEWVAutoApprovalQuotaSoapIn" />
+      <wsdl:output message="tns:GetEWVAutoApprovalQuotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentMediumGreenLimit">
+      <wsdl:input message="tns:GetEstablishmentMediumGreenLimitSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentMediumGreenLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentLowGreenLimit">
+      <wsdl:input message="tns:GetEstablishmentLowGreenLimitSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentLowGreenLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentYellowLimit">
+      <wsdl:input message="tns:GetEstablishmentYellowLimitSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentYellowLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEstablishment">
+      <wsdl:input message="tns:GetCompansationVisasForEstablishmentSoapIn" />
+      <wsdl:output message="tns:GetCompansationVisasForEstablishmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEntity">
+      <wsdl:input message="tns:GetCompansationVisasForEntitySoapIn" />
+      <wsdl:output message="tns:GetCompansationVisasForEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentPendingUnUsedVisas">
+      <wsdl:input message="tns:GetEstablishmentPendingUnUsedVisasSoapIn" />
+      <wsdl:output message="tns:GetEstablishmentPendingUnUsedVisasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityPendingUnUsedVisas">
+      <wsdl:input message="tns:GetEntityPendingUnUsedVisasSoapIn" />
+      <wsdl:output message="tns:GetEntityPendingUnUsedVisasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Quota For Very Small Entities</wsdl:documentation>
+      <wsdl:input message="tns:CheckQuotaForVerySmallEntitiesSoapIn" />
+      <wsdl:output message="tns:CheckQuotaForVerySmallEntitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Quota For Very Small Entities for Target Color</wsdl:documentation>
+      <wsdl:input name="CheckQuotaForVerySmallEntitiesForTargetColor" message="tns:CheckQuotaForVerySmallEntitiesForTargetColorSoapIn" />
+      <wsdl:output name="CheckQuotaForVerySmallEntitiesForTargetColor" message="tns:CheckQuotaForVerySmallEntitiesForTargetColorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Quota For Very Small Entities</wsdl:documentation>
+      <wsdl:input message="tns:CheckQuotaForWhiteEstablishmentSoapIn" />
+      <wsdl:output message="tns:CheckQuotaForWhiteEstablishmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Quota For Very Small Entities for Target Color</wsdl:documentation>
+      <wsdl:input name="CheckQuotaForWhiteEstablishmentForTargetColor" message="tns:CheckQuotaForWhiteEstablishmentForTargetColorSoapIn" />
+      <wsdl:output name="CheckQuotaForWhiteEstablishmentForTargetColor" message="tns:CheckQuotaForWhiteEstablishmentForTargetColorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityCurrentTotalNumberofLaborers">
+      <wsdl:input message="tns:GetEntityCurrentTotalNumberofLaborersSoapIn" />
+      <wsdl:output message="tns:GetEntityCurrentTotalNumberofLaborersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityUnUsedVisas">
+      <wsdl:input message="tns:GetEntityUnUsedVisasSoapIn" />
+      <wsdl:output message="tns:GetEntityUnUsedVisasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEstablishmentEntityHistory">
+      <wsdl:input message="tns:ValidateEstablishmentEntityHistorySoapIn" />
+      <wsdl:output message="tns:ValidateEstablishmentEntityHistorySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EstablishmentKPIWebServiceSoap" type="tns:EstablishmentKPIWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstablishmentQuota">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentQuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentColor">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentColor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntitySaudiLaborersCountByEstablishmentNumber">
+      <soap:operation soapAction="http://tempuri.org/GetEntitySaudiLaborersCountByEstablishmentNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentExcellentLimit">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentExcellentLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentHighGreenLimit">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentHighGreenLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEWVAutoApprovalQuota">
+      <soap:operation soapAction="http://tempuri.org/GetEWVAutoApprovalQuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentMediumGreenLimit">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentMediumGreenLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentLowGreenLimit">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentLowGreenLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentYellowLimit">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentYellowLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEstablishment">
+      <soap:operation soapAction="http://tempuri.org/GetCompansationVisasForEstablishment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEntity">
+      <soap:operation soapAction="http://tempuri.org/GetCompansationVisasForEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentPendingUnUsedVisas">
+      <soap:operation soapAction="http://tempuri.org/GetEstablishmentPendingUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityPendingUnUsedVisas">
+      <soap:operation soapAction="http://tempuri.org/GetEntityPendingUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <soap:operation soapAction="http://tempuri.org/CheckQuotaForVerySmallEntities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <soap:operation soapAction="http://tempuri.org/CheckQuotaForVerySmallEntitiesForTargetColor" style="document" />
+      <wsdl:input name="CheckQuotaForVerySmallEntitiesForTargetColor">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckQuotaForVerySmallEntitiesForTargetColor">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <soap:operation soapAction="http://tempuri.org/CheckQuotaForWhiteEstablishment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <soap:operation soapAction="http://tempuri.org/CheckQuotaForWhiteEstablishmentForTargetColor" style="document" />
+      <wsdl:input name="CheckQuotaForWhiteEstablishmentForTargetColor">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckQuotaForWhiteEstablishmentForTargetColor">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityCurrentTotalNumberofLaborers">
+      <soap:operation soapAction="http://tempuri.org/GetEntityCurrentTotalNumberofLaborers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityUnUsedVisas">
+      <soap:operation soapAction="http://tempuri.org/GetEntityUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEstablishmentEntityHistory">
+      <soap:operation soapAction="http://tempuri.org/ValidateEstablishmentEntityHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EstablishmentKPIWebServiceSoap12" type="tns:EstablishmentKPIWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstablishmentQuota">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentQuota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentColor">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentColor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntitySaudiLaborersCountByEstablishmentNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetEntitySaudiLaborersCountByEstablishmentNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentExcellentLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentExcellentLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentHighGreenLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentHighGreenLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEWVAutoApprovalQuota">
+      <soap12:operation soapAction="http://tempuri.org/GetEWVAutoApprovalQuota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentMediumGreenLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentMediumGreenLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentLowGreenLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentLowGreenLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentYellowLimit">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentYellowLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEstablishment">
+      <soap12:operation soapAction="http://tempuri.org/GetCompansationVisasForEstablishment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompansationVisasForEntity">
+      <soap12:operation soapAction="http://tempuri.org/GetCompansationVisasForEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstablishmentPendingUnUsedVisas">
+      <soap12:operation soapAction="http://tempuri.org/GetEstablishmentPendingUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityPendingUnUsedVisas">
+      <soap12:operation soapAction="http://tempuri.org/GetEntityPendingUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <soap12:operation soapAction="http://tempuri.org/CheckQuotaForVerySmallEntities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForVerySmallEntities">
+      <soap12:operation soapAction="http://tempuri.org/CheckQuotaForVerySmallEntitiesForTargetColor" style="document" />
+      <wsdl:input name="CheckQuotaForVerySmallEntitiesForTargetColor">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckQuotaForVerySmallEntitiesForTargetColor">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <soap12:operation soapAction="http://tempuri.org/CheckQuotaForWhiteEstablishment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckQuotaForWhiteEstablishment">
+      <soap12:operation soapAction="http://tempuri.org/CheckQuotaForWhiteEstablishmentForTargetColor" style="document" />
+      <wsdl:input name="CheckQuotaForWhiteEstablishmentForTargetColor">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckQuotaForWhiteEstablishmentForTargetColor">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityCurrentTotalNumberofLaborers">
+      <soap12:operation soapAction="http://tempuri.org/GetEntityCurrentTotalNumberofLaborers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityUnUsedVisas">
+      <soap12:operation soapAction="http://tempuri.org/GetEntityUnUsedVisas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateEstablishmentEntityHistory">
+      <soap12:operation soapAction="http://tempuri.org/ValidateEstablishmentEntityHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EstablishmentKPIWebService">
+    <wsdl:port name="EstablishmentKPIWebServiceSoap" binding="tns:EstablishmentKPIWebServiceSoap">
+      <soap:address location="http://172.26.20.51:10000/EstablishmentKPIWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EstablishmentKPIWebServiceSoap12" binding="tns:EstablishmentKPIWebServiceSoap12">
+      <soap12:address location="http://172.26.20.51:10000/EstablishmentKPIWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -3,25 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualServices.IdentityServer", "Tamkeen.IndividualsServices.IdentityServer\Tamkeen.IndividualServices.IdentityServer.csproj", "{FFA834D2-5F4E-44F6-8EEB-E2D94FEA80EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualServices.IdentityServer", "IdSrv\Tamkeen.IndividualsServices.IdentityServer\Tamkeen.IndividualServices.IdentityServer.csproj", "{FFA834D2-5F4E-44F6-8EEB-E2D94FEA80EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{6975D09C-E080-4996-890D-64DFCF44B126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApi", "Clients\SampleAspNetWebApi\SampleAspNetWebApi.csproj", "{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApi", "IdSrv\Clients\SampleAspNetWebApi\SampleAspNetWebApi.csproj", "{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApiClient", "Clients\SampleAspNetWebApiClient\SampleAspNetWebApiClient.csproj", "{BE77E895-D91C-4515-8E5D-4756E64A83E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebApiClient", "IdSrv\Clients\SampleAspNetWebApiClient\SampleAspNetWebApiClient.csproj", "{BE77E895-D91C-4515-8E5D-4756E64A83E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Core", "Core\Tamkeen.IndividualsServices.Core\Tamkeen.IndividualsServices.Core.csproj", "{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Data", "Tamkeen.IndividualsServices.Data\Tamkeen.IndividualsServices.Data.csproj", "{DEDD561C-740B-4DAA-B77A-B22355EB006F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Data", "Core\Tamkeen.IndividualsServices.Data\Tamkeen.IndividualsServices.Data.csproj", "{DEDD561C-740B-4DAA-B77A-B22355EB006F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Web.Framework", "Tamkeen.IndividualsServices.Web.Framework\Tamkeen.IndividualsServices.Web.Framework.csproj", "{DA06F963-4075-426B-A8A0-F53F97D254C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Web.Framework", "Presentation\Tamkeen.IndividualsServices.Web.Framework\Tamkeen.IndividualsServices.Web.Framework.csproj", "{DA06F963-4075-426B-A8A0-F53F97D254C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "Clients\SampleAspNetWebMvc\SampleAspNetWebMvc.csproj", "{1DF8470F-D921-417F-B052-3EDF1777A3C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAspNetWebMvc", "IdSrv\Clients\SampleAspNetWebMvc\SampleAspNetWebMvc.csproj", "{1DF8470F-D921-417F-B052-3EDF1777A3C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Services", "Tamkeen.IndividualsServices.Services\Tamkeen.IndividualsServices.Services.csproj", "{4B15618E-7EA7-452B-9208-02CBF38CBCD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.Services", "Core\Tamkeen.IndividualsServices.Services\Tamkeen.IndividualsServices.Services.csproj", "{4B15618E-7EA7-452B-9208-02CBF38CBCD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.WebAPIs", "Tamkeen.IndividualsServices.WebAPIs\Tamkeen.IndividualsServices.WebAPIs.csproj", "{2BA4E324-AEA1-4108-A623-53082B7683E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamkeen.IndividualsServices.WebAPIs", "Presentation\Tamkeen.IndividualsServices.WebAPIs\Tamkeen.IndividualsServices.WebAPIs.csproj", "{2BA4E324-AEA1-4108-A623-53082B7683E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{95460CCA-A7F7-45A3-B3AF-C29F12E39644}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdSrv", "IdSrv", "{D9719CE9-0E65-412E-854D-5A52D9D255C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FDFAFD32-31EE-4A07-B733-F2E1D9328E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,8 +76,15 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{FFA834D2-5F4E-44F6-8EEB-E2D94FEA80EE} = {D9719CE9-0E65-412E-854D-5A52D9D255C5}
+		{6975D09C-E080-4996-890D-64DFCF44B126} = {D9719CE9-0E65-412E-854D-5A52D9D255C5}
 		{6A9C3674-C390-4C67-A5D1-EA7B686ACFF9} = {6975D09C-E080-4996-890D-64DFCF44B126}
 		{BE77E895-D91C-4515-8E5D-4756E64A83E1} = {6975D09C-E080-4996-890D-64DFCF44B126}
+		{68E39C82-11FC-4E5A-B1B3-2B57DC6D9CE0} = {95460CCA-A7F7-45A3-B3AF-C29F12E39644}
+		{DEDD561C-740B-4DAA-B77A-B22355EB006F} = {95460CCA-A7F7-45A3-B3AF-C29F12E39644}
+		{DA06F963-4075-426B-A8A0-F53F97D254C7} = {FDFAFD32-31EE-4A07-B733-F2E1D9328E71}
 		{1DF8470F-D921-417F-B052-3EDF1777A3C8} = {6975D09C-E080-4996-890D-64DFCF44B126}
+		{4B15618E-7EA7-452B-9208-02CBF38CBCD5} = {95460CCA-A7F7-45A3-B3AF-C29F12E39644}
+		{2BA4E324-AEA1-4108-A623-53082B7683E0} = {FDFAFD32-31EE-4A07-B733-F2E1D9328E71}
 	EndGlobalSection
 EndGlobal
