@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shared.Models;
-using Shared.Data;
+using Tamkeen.IndividualsServices.Core.Data;
+using Tamkeen.IndividualsServices.Core.Models;
 using Tamkeen.IndividualsServices.Services.Exceptions;
 
 namespace Tamkeen.IndividualsServices.Services

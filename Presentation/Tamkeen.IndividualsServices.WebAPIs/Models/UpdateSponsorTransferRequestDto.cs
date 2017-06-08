@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Tamkeen.IndividualsServices.WebAPIs.Models
+﻿namespace Tamkeen.IndividualsServices.WebAPIs.Models
 {
     public class UpdateSponsorTransferRequestDto
     {

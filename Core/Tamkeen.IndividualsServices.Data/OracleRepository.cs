@@ -1,13 +1,9 @@
 ﻿using Oracle.DataAccess.Client;
-using Shared.Data;
-using Shared.Models;
+using Tamkeen.IndividualsServices.Core.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tamkeen.IndividualsServices.Core.Data;
 
 namespace Tamkeen.IndividualsServices.Data
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tamkeen.IndividualsServices.Core.Models;
 using Tamkeen.IndividualsServices.Services.Models;
 
 namespace Tamkeen.IndividualsServices.Services

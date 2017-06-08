@@ -10,9 +10,6 @@
 
 namespace Tamkeen.IndividualsServices.Services.ServiceReference
 {
-    using System.Runtime.Serialization;
-
-
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name = "ImmediateApproveQuotaInfo", Namespace = "http://tempuri.org/")]

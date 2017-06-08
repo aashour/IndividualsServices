@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Tamkeen.IndividualsServices.WebAPIs.Models;
 using Tamkeen.IndividualsServices.Services;
@@ -59,11 +56,11 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             {
                 if (request.Action == SponsorTransferRequestAction.Approve)
                 {
-                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Shared.Models.SponsorTransferRequestStatusList.ApprovedByLaborer);
+                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Tamkeen.IndividualsServices.Core.Models.SponsorTransferRequestStatusList.ApprovedByLaborer);
                 }
                 else
                 {
-                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Shared.Models.SponsorTransferRequestStatusList.RejctedByLaborer);
+                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Tamkeen.IndividualsServices.Core.Models.SponsorTransferRequestStatusList.RejctedByLaborer);
                 }
             }
 
