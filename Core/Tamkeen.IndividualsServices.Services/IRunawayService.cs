@@ -6,6 +6,8 @@ namespace Tamkeen.IndividualsServices.Services
     public interface IRunawayService
     {
         IEnumerable<RunawayRequest> GetRunawayRequestByIdNumber(string idNumber);
-        RunawayRequest GetRunawayRequestById(int id);
+        RunawayRequest GetRunawayRequestById(int requestId);
+
+        RunawayComplaint GetRunawayComplaintById(int complaintId);
     }
 }

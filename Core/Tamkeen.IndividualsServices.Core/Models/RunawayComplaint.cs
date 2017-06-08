@@ -16,7 +16,7 @@ namespace Tamkeen.IndividualsServices.Core.Models
         public DateTime? DecisionDate { get; set; }
         public int DecidedByUserId { get; set; }
         public string ClientIPAddress { get; set; }
-        public int RunawayRequestId { get; set; }
+        public int? RunawayRequestId { get; set; }
         public virtual ServiceLog RunawayRequest { get; set; }
         public string Reason { get; set; }
         public virtual Establishment Establishment { get; set; }

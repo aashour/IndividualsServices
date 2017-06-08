@@ -53,15 +53,19 @@
     <Compile Include="IRunawayService.cs" />
     <Compile Include="IServiceLogService.cs" />
     <Compile Include="Configuration\ISettingService.cs" />
+    <Compile Include="ISponsorTransferService.cs" />
     <Compile Include="LaborerService.cs" />
     <Compile Include="Models\RunawayCancellationReasonList.cs" />
     <Compile Include="Models\RunawayRequest.cs" />
     <Compile Include="Models\RunawayRequestStatusList.cs" />
     <Compile Include="NitaqatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Exceptions\RequestNotFoundException.cs" />
     <Compile Include="RunawayService.cs" />
     <Compile Include="ServiceLogService.cs" />
     <Compile Include="ServiceReference\EstablishmentKPIWebService.cs" />
+    <Compile Include="SponsorTransferService.cs" />
+    <Compile Include="Exceptions\UserNotAuthorizedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tamkeen.IndividualsServices.Core\Tamkeen.IndividualsServices.Core.csproj">
@@ -80,5 +84,6 @@
     <None Include="app.config" />
     <None Include="wsdl\EstablishmentKPIWebService.wsdl" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
