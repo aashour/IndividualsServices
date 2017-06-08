@@ -61,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunawayService.cs" />
     <Compile Include="ServiceLogService.cs" />
-    <Compile Include="ServiceReference\Class1.cs" />
     <Compile Include="ServiceReference\EstablishmentKPIWebService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,14 +7,18 @@ namespace Tamkeen.IndividualsServices.Services
     {
         public EstablishmentKPI GetEstablishmentDetails(int laborOfficeId, long sequenceNumber)
         {
-            var client = new NitaqatServiceReference.EstablishmentKPIWebServiceSoapClient();
+            var client = new ServiceReference.EstablishmentKPIWebServiceSoapClient();
 
-            var colorId = client.GetEstablishmentColor(laborOfficeId, sequenceNumber);
+            var response = client.GetEstablishmentColor(new ServiceReference.GetEstablishmentColorRequest
+            {
+                laborOfficeId = laborOfficeId,
+                sequenceNumber = sequenceNumber
+            });
 
-            if (colorId <= 0)
+            if (response != null && response.GetEstablishmentColorResult <= 0)
             {
                 //TODO: Create Typed Exception
-                throw new Exception("Connot get estblishment color");
+                throw new Exception("Connot get establishment color");
             }
 
             return new EstablishmentKPI
@@ -23,7 +27,7 @@ namespace Tamkeen.IndividualsServices.Services
                 SequenceNumber = sequenceNumber,
                 Color = new Color
                 {
-                    Id = colorId
+                    Id = response.GetEstablishmentColorResult
                 }
             };
         }
