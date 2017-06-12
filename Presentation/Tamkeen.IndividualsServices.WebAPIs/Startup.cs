@@ -10,12 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using Tamkeen.IndividualsServices.Core.Configuration;
 
 namespace Tamkeen.IndividualsServices.WebAPIs
 {
     public class Startup
     {
         IHostingEnvironment _env;
+        public IConfigurationRoot Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             _env = env;
@@ -29,13 +32,10 @@ namespace Tamkeen.IndividualsServices.WebAPIs
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var serviceProvider = services.ConfigureApplicationServices(Configuration);
-            var config = serviceProvider.GetService<Tamkeen.IndividualsServices.Core.Configuration.IndividualsServicesConfig>();
+            var config = serviceProvider.GetService<IndividualsServicesConfig>();
 
             services.Configure<MvcOptions>(options =>
             {
@@ -85,26 +85,6 @@ namespace Tamkeen.IndividualsServices.WebAPIs
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(LogLevel.Debug);
-
-            var config = app.ApplicationServices.GetService<Tamkeen.IndividualsServices.Core.Configuration.IndividualsServicesConfig>();
-
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-            // accept access tokens from identity server and require a scope of 'webApi'
-            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-            {
-                AuthenticationScheme = "Bearer",
-
-                // this is only needed because IS3 does not include the API name in the JWT audience list
-                // so we disable UseIdentityServerAuthentication JWT audience check and rely upon
-                // scope validation to ensure we're only accepting tokens for the right API
-                LegacyAudienceValidation = true,
-                
-                Authority = config.IdSrv.BaseUrl.ToString(),
-                ApiName = config.IdSrv.ApiName,
-                RequireHttpsMetadata = true,
-                AllowedScopes = config.RequiredScopes,
-                ApiSecret = config.ClientSecret
-            });
 
             app.ConfigureRequestPipeline();
         }
