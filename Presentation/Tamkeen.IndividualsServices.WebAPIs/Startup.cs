@@ -35,8 +35,8 @@ namespace Tamkeen.IndividualsServices.WebAPIs
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var serviceProvider = services.ConfigureApplicationServices(Configuration);
-            var config = serviceProvider.GetService<IndividualsServicesConfig>();
 
+            var config = serviceProvider.GetService<IndividualsServicesConfig>();
             services.Configure<MvcOptions>(options =>
             {
                 if (_env.IsDevelopment() && !config.SkipSSL)
@@ -47,7 +47,7 @@ namespace Tamkeen.IndividualsServices.WebAPIs
                 var policy = new AuthorizationPolicyBuilder()
                             .AddAuthenticationSchemes("Bearer")
                             .RequireAuthenticatedUser()
-                            .RequireClaim("IdNo")
+                            .RequireClaim("id_number")
                             .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
