@@ -8,13 +8,18 @@ using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Tamkeen.IndividualsServices.WebAPIs
 {
     public class Startup
     {
+        IHostingEnvironment _env;
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -34,7 +39,7 @@ namespace Tamkeen.IndividualsServices.WebAPIs
 
             services.Configure<MvcOptions>(options =>
             {
-                if (!config.SkipSSL /*&& _hostingEnv.IsDevelopment()*/)
+                if (_env.IsDevelopment() && !config.SkipSSL)
                 {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
@@ -48,12 +53,24 @@ namespace Tamkeen.IndividualsServices.WebAPIs
             });
 
             services
-                .AddAuthorization()
+                .AddAuthorization(options =>
+                {
+                    options.AddPolicy("IdNoRequired", builder =>
+                    {
+                        builder.RequireAssertion(context => context.User.HasClaim(c => c.Type == "IdNo"));
+                        //builder
+                        //    .AddAuthenticationSchemes("Bearer")
+                        //    .RequireAuthenticatedUser()
+                        //    .RequireClaim("IdNo")
+                        //    .Build();
+                    });
+                })
                 .AddCors(options =>
                 {
                     options.AddPolicy("CorsDefaults", builder =>
                     {
-                        builder.WithOrigins(config.CorsEnabledUri.ToArray())
+                        builder
+                            .WithOrigins(config.CorsEnabledUri.ToArray())
                             .WithHeaders(config.CorsEnabledHeaders.ToArray())
                             .WithMethods(config.CorsEnabledVerbs.ToArray())
                             .WithExposedHeaders(config.CorsExposedHeaders.ToArray())
@@ -71,11 +88,17 @@ namespace Tamkeen.IndividualsServices.WebAPIs
 
             var config = app.ApplicationServices.GetService<Tamkeen.IndividualsServices.Core.Configuration.IndividualsServicesConfig>();
 
-
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             // accept access tokens from identity server and require a scope of 'webApi'
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 AuthenticationScheme = "Bearer",
+
+                // this is only needed because IS3 does not include the API name in the JWT audience list
+                // so we disable UseIdentityServerAuthentication JWT audience check and rely upon
+                // scope validation to ensure we're only accepting tokens for the right API
+                LegacyAudienceValidation = true,
+                
                 Authority = config.IdSrv.BaseUrl.ToString(),
                 ApiName = config.IdSrv.ApiName,
                 RequireHttpsMetadata = true,

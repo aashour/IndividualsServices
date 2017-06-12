@@ -51,7 +51,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.IdSrv
             if (user.IdExpiryDate.HasValue)
                 claims.Add(new Claim("id_expiry_date", user.IdExpiryDate.Value.ToString(), ClaimValueTypes.DateTime));
             if (user.IqamaNumber.HasValue)
-                claims.Add(new Claim("iqama_number", user.IqamaNumber.Value.ToString()));
+                claims.Add(new Claim("id_number", user.IqamaNumber.Value.ToString()));
             if (user.IqamaExpiryDate.HasValue)
                 claims.Add(new Claim("iqama_expiry_date", user.IqamaExpiryDate.Value.ToString(), ClaimValueTypes.DateTime));
 

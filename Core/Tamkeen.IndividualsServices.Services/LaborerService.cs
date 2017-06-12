@@ -30,13 +30,9 @@ namespace Tamkeen.IndividualsServices.Services
             return _laborerRepository.GetById(laborerId);
         }
 
-        public Laborer GetLaborerByIdNumber(string idNumber)
+        public Laborer GetLaborerByIdNumber(long idNumber)
         {
-            var query = from laborer in _laborerRepository.Table
-                        where laborer.IdNo.Equals(idNumber, StringComparison.InvariantCultureIgnoreCase)
-                        select laborer;
-            
-            return query.FirstOrDefault();
+            return _laborerRepository.Table.Where(l => l.IdNo == idNumber.ToString()).FirstOrDefault();
         }
 
         public IList<Laborer> GetLaborersByIdNumbers(string[] laborerIdNumbers)

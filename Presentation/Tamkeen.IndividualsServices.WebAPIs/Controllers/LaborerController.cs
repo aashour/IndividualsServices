@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Tamkeen.IndividualsServices.Services;
 using Tamkeen.IndividualsServices.WebAPIs.Extensions;
+using System.Linq;
 
 namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 {
     [Route("api/[controller]")]
-    public class LaborerController : Controller
+    [Authorize]
+    public class LaborerController : BaseController
     {
         ILaborerService _laborerService;
 
@@ -14,11 +17,11 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             _laborerService = laborerService;
         }
 
-        // GET: api/Laborer/5
-        [HttpGet("GetByIdNumber/{idNumber}")]
-        public IActionResult GetByIdNumber(long idNumber)
+        // GET: api/Laborer/2222222222
+        [HttpGet]
+        public IActionResult GetByIdNumber()
         {
-            var laborer = _laborerService.GetLaborerByIdNumber(idNumber.ToString());
+            var laborer = _laborerService.GetLaborerByIdNumber(CurrentUser.IdNumber);
 
             if (laborer != null)
             {

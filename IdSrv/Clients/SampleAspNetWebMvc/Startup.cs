@@ -32,7 +32,7 @@ namespace SampleAspNetWebMvc
                 //MetadataAddress = $"{Tamkeen.IndividualsServices.Core.Constants.BaseAddress}/.well-known/jwks",
                 RedirectUri = Tamkeen.IndividualsServices.Core.Constants.ClientRedirectUri,
                 ResponseType = "code id_token",
-                Scope = "openid profile read write offline_access webApi",
+                Scope = "openid profile read write offline_access Tamkeen.IndividualsServices.WebAPIs",
 
                 TokenValidationParameters = new TokenValidationParameters
                 {
@@ -75,7 +75,7 @@ namespace SampleAspNetWebMvc
                         id.AddClaim(new Claim("refresh_token", tokenResponse.RefreshToken));
                         id.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
                         id.AddClaim(new Claim("sid", n.AuthenticationTicket.Identity.FindFirst("sid").Value));
-                        id.AddClaim(new Claim("iqama_number", n.AuthenticationTicket.Identity.FindFirst("iqama_number").Value));
+                        id.AddClaim(new Claim("id_number", n.AuthenticationTicket.Identity.FindFirst("id_number").Value));
 
                         n.AuthenticationTicket = new AuthenticationTicket(
                             new ClaimsIdentity(id.Claims, n.AuthenticationTicket.Identity.AuthenticationType, "name", "role"),

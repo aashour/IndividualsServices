@@ -51,7 +51,6 @@ namespace Tamkeen.IndividualsServices.Data.Mapping
             this.Property(t => t.Email).HasColumnName("Email");
             this.Property(t => t.IdNumber).HasColumnName("Id_Number");
             this.Property(t => t.IdExpiryDate).HasColumnName("Id_ExpiryDate");
-            this.Property(t => t.IqamaNumber).HasColumnName("Iqama_Number");
             this.Property(t => t.IqamaExpiryDate).HasColumnName("Iqama_ExpiryDate");
             this.Property(t => t.Deleted).HasColumnName("IsUserDeleted");
             this.Property(t => t.Activated).HasColumnName("IsActivated");

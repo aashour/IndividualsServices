@@ -8,7 +8,7 @@ using Tamkeen.IndividualsServices.WebAPIs.Models;
 namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 {
     [Route("api/[controller]")]
-    public class RunawayComplaintController : Controller
+    public class RunawayComplaintController : BaseController
     {
         private readonly int _maxFileSize = 1024 * 1024;
         private readonly string[] _fileExtensions = new string[] { ".doc", ".docx", ".ppt", ".pptx", ".txt", ".xls", ".xlsx", ".png", ".jpg", ".jpeg", ".pdf" };
@@ -60,6 +60,11 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
         public IActionResult Get(int id)
         {
             var runawayComplaint = _runawayService.GetRunawayComplaintById(id);
+
+            if (runawayComplaint.RunawayLaborId != CurrentUser.IdNumber)
+            {
+                //return Task
+            }
 
             if (runawayComplaint != null)
             {

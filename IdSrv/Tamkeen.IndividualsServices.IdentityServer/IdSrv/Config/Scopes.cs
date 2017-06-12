@@ -22,7 +22,7 @@ namespace IdentityServer3.Host.Config
                     },
                     new Scope
                     {
-                        Name = "webApi",
+                        Name = "Tamkeen.IndividualsServices.WebAPIs",
                          DisplayName = "access web api",
                         Type = ScopeType.Resource,
                         Claims = new List<ScopeClaim>
@@ -30,8 +30,13 @@ namespace IdentityServer3.Host.Config
                             new ScopeClaim(Constants.ClaimTypes.Name),
                             new ScopeClaim(Constants.ClaimTypes.Role),
                             new ScopeClaim(Constants.ClaimTypes.Email, alwaysInclude:true),
-                            new ScopeClaim("iqama_number"),
+                            new ScopeClaim("id_number"),
                             new ScopeClaim("birth_date")
+                        },
+
+                        ScopeSecrets = new List<Secret>
+                        {
+                            new Secret("secret".Sha256())
                         }
                     },
                     new Scope
@@ -49,7 +54,7 @@ namespace IdentityServer3.Host.Config
                             new ScopeClaim(Constants.ClaimTypes.Email),
                             new ScopeClaim("first_name"),
                             new ScopeClaim("fourth_name"),
-                            new ScopeClaim("iqama_number"),
+                            new ScopeClaim("id_number"),
                             new ScopeClaim("iqama_expiry_date"),
                             new ScopeClaim("birth_date")
                         },
