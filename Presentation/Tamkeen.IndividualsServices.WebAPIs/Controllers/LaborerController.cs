@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Tamkeen.IndividualsServices.Services;
 using Tamkeen.IndividualsServices.WebAPIs.Extensions;
-using System.Linq;
 
 namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 {

@@ -6,11 +6,6 @@ using IdentityManager.Core.Logging;
 using IdentityManager.Logging;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Autofac;
-using System.Collections.Generic;
-using System;
-using System.Linq;
-using Autofac.Integration.WebApi;
 
 [assembly: OwinStartup(typeof(SampleAspNetWebApi.Startup))]
 namespace SampleAspNetWebApi

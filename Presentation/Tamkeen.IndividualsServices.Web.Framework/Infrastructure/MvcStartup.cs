@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
-using Tamkeen.IndividualsServices.Core.Configuration;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {

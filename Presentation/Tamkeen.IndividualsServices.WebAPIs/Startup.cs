@@ -8,8 +8,6 @@ using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
 using Tamkeen.IndividualsServices.Core.Configuration;
 
 namespace Tamkeen.IndividualsServices.WebAPIs

@@ -1,5 +1,4 @@
 ﻿using System;
-using Tamkeen.IndividualsServices.Core.Data;
 
 namespace Tamkeen.IndividualsServices.Core.Models
 {
