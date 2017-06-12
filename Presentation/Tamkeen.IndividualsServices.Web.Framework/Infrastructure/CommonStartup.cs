@@ -20,7 +20,23 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             services.AddOptions();
 
             //add isConfig configuration parameters
-            var isConfig = services.ConfigureStartupConfig<IndividualsServicesConfig>(configuration.GetSection("IndividualsServices"));
+            var config = services.ConfigureStartupConfig<IndividualsServicesConfig>(configuration.GetSection("IndividualsServices"));
+
+
+            services
+               .AddCors(options =>
+               {
+                   options.AddPolicy("CorsDefaults", builder =>
+                   {
+                       builder
+                           .WithOrigins(config.CorsEnabledUri.ToArray())
+                           .WithHeaders(config.CorsEnabledHeaders.ToArray())
+                           .WithMethods(config.CorsEnabledVerbs.ToArray())
+                           .WithExposedHeaders(config.CorsExposedHeaders.ToArray())
+                           .AllowCredentials();
+                   });
+               });
+
 
             services.AddDistributedMemoryCache();
             //add memory cache
@@ -36,7 +52,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            //application.UseStaticFiles();
+            application.UseStaticFiles();
         }
 
         public int Order => 100;

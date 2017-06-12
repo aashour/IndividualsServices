@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace SampleAspNetWebApiCore
 {
@@ -27,18 +28,32 @@ namespace SampleAspNetWebApiCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc();
-
             services.Configure<MvcOptions>(options =>
             {
-                var policy = new AuthorizationPolicyBuilder()
+                var authPolicy = new AuthorizationPolicyBuilder()
                             .AddAuthenticationSchemes("Bearer")
                             .RequireAuthenticatedUser()
                             .RequireClaim("id_number")
                             .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
+                options.Filters.Add(new AuthorizeFilter(authPolicy));
+
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.WithOrigins("https://localhost:44300", "https://localhost:44305", "http://localhost:44305", "https://localhost:44304")
+                        .WithHeaders("accept", "authorization")
+                        .WithMethods("get")
+                        .WithExposedHeaders("WWW-Authenticate")
+                        .AllowCredentials();
+                });
+            });
+
+            // Add framework services.
+            services.AddMvc();
+
 
         }
 
@@ -67,6 +82,7 @@ namespace SampleAspNetWebApiCore
 
 
             app.UseMvc();
+            app.UseCors("CorsPolicy");
         }
     }
 }

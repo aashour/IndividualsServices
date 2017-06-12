@@ -4,6 +4,7 @@
 <div>
     <a class="btn btn-default" href="~/Home/CallApi">Call API from MVC</a>
     <button id="api" class="btn btn-default">Call API from JS</button>
+    <button id="coreapi" class="btn btn-default">Call Core API from JS</button>
 </div>
 
 <div id="result" style="display:none">
@@ -13,33 +14,43 @@
 
 
 <script>
-    var access_token = '@ViewData["access_token"]';
+
+    function CallApi(apiUrl)
+    {
+        var access_token = '@ViewData["access_token"]';
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", apiUrl);
+        xhr.onload = function () {
+            document.getElementById('result').style.display = "";
+            document.getElementById('api_result').innerText = JSON.stringify(JSON.parse(xhr.response), null, 2);
+        };
+        xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+        xhr.send();
+
+
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+            },
+            success: function (data) {
+                $('#result').style.display = "";
+                $('#api_result').val = JSON.stringify(JSON.parse(data), null, 2);
+            },
+            error: function (x, y, z) {
+                alert(JSON.stringify(x) + '\n' + JSON.stringify(y) + '\n' + JSON.stringify(z));
+            }
+        });
+    }
+
+
+    document.getElementById('coreapi').addEventListener("click", function () {
+        CallApi("http://localhost:5000/api/laborer");
+    }, false);
+
         document.getElementById('api').addEventListener("click", function () {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://localhost:44304/identity");
-            xhr.onload = function () {
-                document.getElementById('result').style.display = "";
-                document.getElementById('api_result').innerText = JSON.stringify(JSON.parse(xhr.response), null, 2);
-            };
-            xhr.setRequestHeader("Authorization", "Bearer " + access_token);
-            xhr.send();
-
-
-            $.ajax({
-                url: "https://localhost:44304/identity",
-                type: 'GET',
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Authorization", "Bearer " + access_token);
-                },
-                success: function (data) {
-                    $('#result').style.display = "";
-                    $('#api_result').val = JSON.stringify(JSON.parse(data), null, 2);
-                },
-                error: function (x, y, z) {
-                    alert(JSON.stringify(x) + '\n' + JSON.stringify(y) + '\n' + JSON.stringify(z));
-                }
-            });
-
+            CallApi("https://localhost:44304/identity");
         }, false);
 </script>
 

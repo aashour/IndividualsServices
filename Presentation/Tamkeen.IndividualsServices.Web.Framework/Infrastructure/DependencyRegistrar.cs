@@ -12,6 +12,7 @@ using System.Reflection;
 using Tamkeen.IndividualsServices.Core.Configuration;
 using Autofac.Builder;
 using Tamkeen.IndividualsServices.Services.Configuration;
+using Tamkeen.IndividualsServices.Web.Framework.Mvc.Routing;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {
@@ -61,6 +62,9 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             var oracleRepo = new OracleRepository(config.OracleDb.ConnectionString, config.OracleDb.Schema);
             builder.Register<IOracleRepository>(ora => oracleRepo).InstancePerLifetimeScope();
 
+
+            builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
+            builder.RegisterType<SettingService>().As<ISettingService>().InstancePerLifetimeScope();
             //register all settings
             builder.RegisterSource(new SettingsSource());
         }

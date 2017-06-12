@@ -4,6 +4,8 @@
     <TargetFramework>net47</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
     <UserSecretsId>cc4cdfcf-54b1-4d3b-9587-6bba346ea777</UserSecretsId>
+    <PostBuildEvent>copy /y "$(ProjectDir)appsettings.json" "$(OutDir)"
+</PostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>

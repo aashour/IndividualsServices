@@ -154,6 +154,9 @@
     <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNetCore.Routing.Abstractions.1.1.2\lib\net451\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.StaticFiles, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNetCore.StaticFiles.1.1.2\lib\net451\Microsoft.AspNetCore.StaticFiles.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNetCore.WebUtilities.1.1.2\lib\net451\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
     </Reference>
@@ -382,6 +385,9 @@
     <Compile Include="Infrastructure\Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Infrastructure\MvcStartup.cs" />
     <Compile Include="Mvc\Filters\ExceptionFilter.cs" />
+    <Compile Include="Mvc\Routing\IRouteProvider.cs" />
+    <Compile Include="Mvc\Routing\RoutePublisher.cs" />
+    <Compile Include="Mvc\Routing\IRoutePublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -33,6 +33,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 
             //handle 404 errors
             application.UsePageNotFound();
+            application.UseUnauthorized();
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         public int Order
         {
             //error handlers should be loaded first
-            get { return 0; }
+            get { return -1; }
         }
     }
 }

@@ -31,7 +31,6 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions
             return serviceProvider;
         }
 
-
         /// <summary>
         /// Create, bind and register as service the specified configuration parameters 
         /// </summary>
@@ -83,7 +82,6 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions
 
             //add global exception filter
             mvcBuilder.AddMvcOptions(options => options.Filters.Add(new ExceptionFilter()));
-            //mvcBuilder.AddMvcOptions(options => options.Filters.Add(new AuthorizationFillter()));
 
             //add fluent validation
             mvcBuilder.AddFluentValidation(configuration => configuration.ValidatorFactoryType = typeof(ValidatorFactory));

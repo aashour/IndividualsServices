@@ -32,16 +32,8 @@ namespace Tamkeen.IndividualsServices.WebAPIs
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var serviceProvider = services.ConfigureApplicationServices(Configuration);
-
-            var config = serviceProvider.GetService<IndividualsServicesConfig>();
             services.Configure<MvcOptions>(options =>
             {
-                if (_env.IsDevelopment() && !config.SkipSSL)
-                {
-                    options.Filters.Add(new RequireHttpsAttribute());
-                }
-
                 var policy = new AuthorizationPolicyBuilder()
                             .AddAuthenticationSchemes("Bearer")
                             .RequireAuthenticatedUser()
@@ -50,31 +42,18 @@ namespace Tamkeen.IndividualsServices.WebAPIs
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services
-                .AddAuthorization(options =>
+            var serviceProvider = services.ConfigureApplicationServices(Configuration);
+            var config = serviceProvider.GetService<IndividualsServicesConfig>();
+
+            services.Configure<MvcOptions>(options =>
+            {
+                if (_env.IsDevelopment() && !config.SkipSSL)
                 {
-                    options.AddPolicy("IdNoRequired", builder =>
-                    {
-                        builder.RequireAssertion(context => context.User.HasClaim(c => c.Type == "IdNo"));
-                        //builder
-                        //    .AddAuthenticationSchemes("Bearer")
-                        //    .RequireAuthenticatedUser()
-                        //    .RequireClaim("IdNo")
-                        //    .Build();
-                    });
-                })
-                .AddCors(options =>
-                {
-                    options.AddPolicy("CorsDefaults", builder =>
-                    {
-                        builder
-                            .WithOrigins(config.CorsEnabledUri.ToArray())
-                            .WithHeaders(config.CorsEnabledHeaders.ToArray())
-                            .WithMethods(config.CorsEnabledVerbs.ToArray())
-                            .WithExposedHeaders(config.CorsExposedHeaders.ToArray())
-                            .AllowCredentials();
-                    });
-                });
+                    options.Filters.Add(new RequireHttpsAttribute());
+                }
+            });
+
+
 
             return serviceProvider;
         }
@@ -83,8 +62,11 @@ namespace Tamkeen.IndividualsServices.WebAPIs
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(LogLevel.Debug);
-
+            app.UseStatusCodePages();
+            app.UseCors("CorsDefaults");
             app.ConfigureRequestPipeline();
+
+
         }
     }
 

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using System.Net;
 using Tamkeen.IndividualsServices.Core.Infrastructure;
+using Tamkeen.IndividualsServices.Web.Framework.Mvc.Routing;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions
 {
@@ -47,7 +49,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions
             application.UseStatusCodePages(async context =>
             {
                 //handle 404 Not Found
-                if (context.HttpContext.Response.StatusCode == 404)
+                if (context.HttpContext.Response.StatusCode == (int)HttpStatusCode.NotFound)
                 {
                     //get original path and query
                     var originalPath = context.HttpContext.Request.Path;
@@ -81,9 +83,42 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions
             });
         }
 
+
+        /// <summary>
+        /// Adds a special handler that checks for responses with the 404 status code that do not have a body
+        /// </summary>
+        /// <param name="application">Builder for configuring an application's request pipeline</param>
+        public static void UseUnauthorized(this IApplicationBuilder application)
+        {
+            application.UseStatusCodePages(async context =>
+            {
+                //handle 401 not authorized
+                if (context.HttpContext.Response.StatusCode == (int)HttpStatusCode.Unauthorized)
+                {
+                    //get new path
+                    context.HttpContext.Request.Path = "/unauthorized";
+                    context.HttpContext.Request.QueryString = QueryString.Empty;
+
+                    try
+                    {
+                        //re-execute request with new path
+                        await context.Next(context.HttpContext);
+                    }
+                    finally
+                    {
+                    }
+                }
+            });
+        }
+
+
         public static void UseIndividualsServicesMvc(this IApplicationBuilder application)
         {
-            application.UseMvc();
+            application.UseMvc(routeBuilder =>
+            {
+                //register all routes
+                EngineContext.Current.Resolve<IRoutePublisher>().RegisterRoutes(routeBuilder);
+            });
         }
 
     }

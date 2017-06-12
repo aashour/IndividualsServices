@@ -103,6 +103,7 @@ namespace Tamkeen.IndividualsServices.Core.Infrastructure
             //create and sort instances of startup configurations
             var instances = startupConfigurations
                 .Select(startupConfiguration => (IStartup)Activator.CreateInstance(startupConfiguration))
+                .Where(startupConfiguration => startupConfiguration.Order > -1)
                 .OrderBy(startupConfiguration => startupConfiguration.Order);
 
             //configure services
@@ -129,6 +130,7 @@ namespace Tamkeen.IndividualsServices.Core.Infrastructure
             //create and sort instances of startup configurations
             var instances = startupConfigurations
                 .Select(startupConfiguration => (IStartup)Activator.CreateInstance(startupConfiguration))
+                .Where(startupConfiguration => startupConfiguration.Order > -1)
                 .OrderBy(startupConfiguration => startupConfiguration.Order);
 
             //configure request pipeline
