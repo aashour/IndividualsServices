@@ -7,7 +7,6 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tamkeen.IndividualsServices.Core.Infrastructure.DependencyManagement;
@@ -77,14 +76,14 @@ namespace Tamkeen.IndividualsServices.Core.Infrastructure
         /// <summary>
         /// Initialize engine
         /// </summary>
-        /// <param name="hostingEnvironment">Web hosting environment an application is running in</param>
-        /// <param name="applicationPartManager">Application part manager</param>
-        public void Initialize(IHostingEnvironment hostingEnvironment, ApplicationPartManager applicationPartManager)
+        /// <param name="services">Collection of service descriptors</param>
+        public void Initialize(IServiceCollection services)
         {
             //most of API providers require TLS 1.2 nowadays
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //set base application path
+            var hostingEnvironment = services.BuildServiceProvider().GetRequiredService<IHostingEnvironment>();
             CommonHelper.BaseDirectory = hostingEnvironment.ContentRootPath;
 
         }

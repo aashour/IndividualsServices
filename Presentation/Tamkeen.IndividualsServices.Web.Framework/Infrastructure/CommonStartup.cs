@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Tamkeen.IndividualsServices.Core.Infrastructure;
 using Tamkeen.IndividualsServices.Core.Configuration;
-using Tamkeen.IndividualsServices.Core.Extensions;
+using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 
-namespace Tamkeen.IndividualsServices.Core.Infrastructure
+namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {
-    /// <summary>
-    /// Represents object for the configuring core services and middleware on application startup
-    /// </summary>
-    public class CoreStartup : IStartup
+    public class CommonStartup : IStartup
     {
         /// <summary>
         /// Add and configure any of the middleware
@@ -25,6 +27,7 @@ namespace Tamkeen.IndividualsServices.Core.Infrastructure
             //add isConfig configuration parameters
             var isConfig = services.ConfigureStartupConfig<IndividualsServicesConfig>(configuration.GetSection("IndividualsServices"));
 
+            services.AddDistributedMemoryCache();
             //add memory cache
             services.AddMemoryCache();
 
@@ -38,18 +41,10 @@ namespace Tamkeen.IndividualsServices.Core.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            //exception handling
-            var hostingEnvironment = EngineContext.Current.Resolve<IHostingEnvironment>();
-            application.UseExceptionHandler(hostingEnvironment.IsDevelopment());
+            //application.UseStaticFiles();
         }
 
-        /// <summary>
-        /// Gets order of this startup configuration implementation
-        /// </summary>
-        public int Order
-        {
-            //load core services first
-            get { return 0; }
-        }
+        public int Order => 100;
+
     }
 }

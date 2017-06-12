@@ -63,7 +63,7 @@ namespace IdentityServer3.Host.Config
                     Enabled = true,
                     AccessTokenType = AccessTokenType.Reference,
 
-                    Flow = Flows.ClientCredentials,
+                    Flow = Flows.AuthorizationCode,
 
                     ClientSecrets = new List<Secret>
                     {

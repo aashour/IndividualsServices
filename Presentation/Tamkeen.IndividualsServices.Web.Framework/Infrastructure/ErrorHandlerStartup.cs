@@ -1,16 +1,16 @@
-﻿using Tamkeen.IndividualsServices.Core.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Tamkeen.IndividualsServices.Core.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Tamkeen.IndividualsServices.Core.Infrastructure;
+using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {
     /// <summary>
-    /// Represents object for the configuring web services and middleware on application startup
+    /// Represents object for the configuring exceptions and errors handling on application startup
     /// </summary>
-    public class WebStartup : IStartup
+    public class ErrorHandlerStartup : Core.Infrastructure.IStartup
     {
         /// <summary>
         /// Add and configure any of the middleware
@@ -19,14 +19,6 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         /// <param name="configuration">Configuration root of the application</param>
         public void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
         {
-            //add localization
-            //services.AddLocalization();
-
-            //add and configure MVC feature
-            services.AddIndividualsServicesMvc();
-
-            var config = services.BuildServiceProvider().GetService<IndividualsServicesConfig>();
-
         }
 
         /// <summary>
@@ -35,9 +27,21 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            application.UseMvc();
+            //exception handling
+            var hostingEnvironment = EngineContext.Current.Resolve<IHostingEnvironment>();
+            application.UseExceptionHandler(hostingEnvironment.IsDevelopment());
+
+            //handle 404 errors
+            application.UsePageNotFound();
         }
 
-        public int Order => 1000;
+        /// <summary>
+        /// Gets order of this startup configuration implementation
+        /// </summary>
+        public int Order
+        {
+            //error handlers should be loaded first
+            get { return 0; }
+        }
     }
 }
