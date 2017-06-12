@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Tamkeen.IndividualsServices.WebAPIs.Models;
 using Tamkeen.IndividualsServices.Services;
 using Tamkeen.IndividualsServices.WebAPIs.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Tamkeen.IndividualsServices.Core.Models;
 
 namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 {
     [Route("api/[controller]")]
-    public class SponsorTransferController : Controller
+    [Authorize]
+    public class SponsorTransferController : BaseController
     {
         ISponsorTransferService _sponsorTransferService;
 
@@ -17,10 +20,10 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
         }
 
         // GET: api/Laborer/5
-        [HttpGet("{idNumber}")]
-        public IActionResult Get(long idNumber)
+        [HttpGet]
+        public IActionResult Get()
         {
-            var sponsorTransferReqeusts = _sponsorTransferService.GetByIdNumber(idNumber);
+            var sponsorTransferReqeusts = _sponsorTransferService.GetByIdNumber(CurrentUser.IdNumber);
 
             if (sponsorTransferReqeusts != null && sponsorTransferReqeusts.Any())
             {
@@ -47,8 +50,8 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             }
         }
 
-        [HttpPost("{idNumber}")]
-        public IActionResult Post([FromForm] UpdateSponsorTransferRequestDto request, long idNumber)
+        [HttpPost]
+        public IActionResult Post([FromForm] UpdateSponsorTransferRequestDto request)
         {
             var result = false;
 
@@ -56,11 +59,11 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             {
                 if (request.Action == SponsorTransferRequestAction.Approve)
                 {
-                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Tamkeen.IndividualsServices.Core.Models.SponsorTransferRequestStatusList.ApprovedByLaborer);
+                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, CurrentUser.IdNumber, SponsorTransferRequestStatusList.ApprovedByLaborer);
                 }
                 else
                 {
-                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, idNumber, Tamkeen.IndividualsServices.Core.Models.SponsorTransferRequestStatusList.RejctedByLaborer);
+                    result = _sponsorTransferService.UpdateSponsorTransferRequest(request.LaborOfficeId, request.Year, request.SequenceNumber, CurrentUser.IdNumber, SponsorTransferRequestStatusList.RejctedByLaborer);
                 }
             }
 

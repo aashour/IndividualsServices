@@ -52,7 +52,7 @@ namespace Tamkeen.IndividualServices.IdentityServer
                                 .UseInMemoryClients(Clients.Get(false))
                                 .UseInMemoryScopes(Scopes.Get());
 
-                //factory.ClaimsProvider = new IdentityServer3.Core.Configuration.Registration<IdentityServer3.Core.Services.IClaimsProvider>(typeof(ClaimsProvider));
+                factory.ClaimsProvider = new IdentityServer3.Core.Configuration.Registration<IdentityServer3.Core.Services.IClaimsProvider>(typeof(ClaimsProvider));
                 factory.UserService = new IdentityServer3.Core.Configuration.Registration<IUserService>(resolver => new UserService());
 
                 idsrvApp.UseIdentityServer(new IdentityServerOptions

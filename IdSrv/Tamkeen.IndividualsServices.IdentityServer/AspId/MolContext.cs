@@ -25,8 +25,7 @@ namespace Tamkeen.IndividualServices.IdentityServer.AspId
             user.Property(x => x.BirthDate).HasColumnName("Birth_Date");
             user.Property(x => x.UserTypeId).HasColumnName("User_Type_Id");
             user.Property(x => x.IdNumber).HasColumnName("Id_Number");
-            user.Property(x => x.IdExpiryDate).HasColumnName("Id_Expiry_Date");
-            user.Property(x => x.IqamaNumber).HasColumnName("Iqama_Number");
+            user.Property(x => x.IdExpiryDate).HasColumnName("Id_Expiry_Date");           
             user.Property(x => x.IqamaExpiryDate).HasColumnName("Iqama_Expiry_Date");
 
             var role = modelBuilder.Entity<MolRole>();

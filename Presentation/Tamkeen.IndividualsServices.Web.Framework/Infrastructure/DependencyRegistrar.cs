@@ -56,7 +56,10 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             builder.RegisterType<NitaqatService>().As<INitaqatService>().InstancePerLifetimeScope();
             builder.RegisterType<EstablishmentService>().As<IEstablishmentService>().InstancePerLifetimeScope();
             builder.RegisterType<RunawayService>().As<IRunawayService>().InstancePerLifetimeScope();
+            builder.RegisterType<SponsorTransferService>().As<ISponsorTransferService>().InstancePerLifetimeScope();
 
+            var oracleRepo = new OracleRepository(config.OracleDb.ConnectionString, config.OracleDb.Schema);
+            builder.Register<IOracleRepository>(ora => oracleRepo).InstancePerLifetimeScope();
 
             //register all settings
             builder.RegisterSource(new SettingsSource());

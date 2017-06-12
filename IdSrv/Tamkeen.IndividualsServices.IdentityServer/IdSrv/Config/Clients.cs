@@ -38,7 +38,7 @@ namespace IdentityServer3.Host.Config
                         Constants.StandardScopes.OfflineAccess,
                         "read",
                         "write",
-                        "webApi"
+                        "Tamkeen.IndividualsServices.WebAPIs"
                     },
                     ClientSecrets = new List<Secret>
                     {
@@ -73,7 +73,7 @@ namespace IdentityServer3.Host.Config
                     AllowedScopes = new List<string>
                     {
                         Constants.StandardScopes.Profile,
-                        "webApi"
+                        "Tamkeen.IndividualsServices.WebAPIs"
                     }
                 },
 
@@ -95,7 +95,7 @@ namespace IdentityServer3.Host.Config
                     AllowedScopes = new List<string>
                     {
                         Constants.StandardScopes.Profile,
-                        "webApi"
+                        "Tamkeen.IndividualsServices.WebAPIs"
                     }
                 }
             };

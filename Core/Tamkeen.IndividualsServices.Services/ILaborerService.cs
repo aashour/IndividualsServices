@@ -9,7 +9,7 @@ namespace Tamkeen.IndividualsServices.Services
 
         IList<Laborer> GetLaborersByIds(long[] laborerIds);
 
-        Laborer GetLaborerByIdNumber(string idNumber);
+        Laborer GetLaborerByIdNumber(long idNumber);
 
         Laborer GetLaborerByBorderNumber(string borderNumber);
 

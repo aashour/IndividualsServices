@@ -21,6 +21,8 @@ namespace Tamkeen.IndividualsServices.Core.Configuration
 
         public IdSrvConfig IdSrv { get; set; }
         public bool SkipSSL { get; set; }
+
+        public OracleDb OracleDb { get; set; }
     }
 
     public class DbConnectionString
@@ -33,5 +35,12 @@ namespace Tamkeen.IndividualsServices.Core.Configuration
     {
         public Uri BaseUrl { get; set; }
         public string ApiName { get; set; }
+    }
+
+
+    public class OracleDb
+    {
+        public string Schema { get; set; }
+        public string ConnectionString { get; set; }
     }
 }
