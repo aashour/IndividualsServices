@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Mvc.Filters
 {
@@ -20,25 +22,31 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Mvc.Filters
             //just log an exception here, handle it later
             context.ExceptionHandled = false;
 
-            //check whether database is already installed
-            //if (!DataSettingsHelper.DatabaseIsInstalled())
-            //    return;
+            if (context.Exception == null) return;
 
-            try
-            {
-                //get logger
-                //var logger = EngineContext.Current.Resolve<ILogger>();
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Result = new JsonResult(
+                new
+                {
+                    context.Exception.Message,
+                    context.Exception.StackTrace
+                });
 
-                //get current user
-                //var currentUser = EngineContext.Current.Resolve<IWorkContext>().CurrentUser;
+            //try
+            //{
+            //    //get logger
+            //    var logger = EngineContext.Current.Resolve<ILogger>();
 
-                //log exception
-                //logger.Error(context.Exception.Message, context.Exception, currentUser);
-            }
-            catch (Exception)
-            {
-                //don't throw new exception if occurs
-            }
+            //    //get current customer
+            //    var currentCustomer = EngineContext.Current.Resolve<IWorkContext>().CurrentCustomer;
+
+            //    //log exception
+            //    logger.Error(context.Exception.Message, context.Exception, currentCustomer);
+            //}
+            //catch (Exception)
+            //{
+            //    //don't throw new exception if occurs
+            //}
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Reflection;
 using Tamkeen.IndividualsServices.Core.Configuration;
 using Autofac.Builder;
 using Tamkeen.IndividualsServices.Services.Configuration;
+using Tamkeen.IndividualsServices.Web.Framework.Mvc.Routing;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {
@@ -23,7 +24,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         {
             //data layer
             var dataSettingsManager = new DataSettingsManager();
-            var dataProviderSettings = dataSettingsManager.LoadSettings(connectionStringName: config.DbConnection);
+            var dataProviderSettings = dataSettingsManager.LoadSettings(connectionStringName: config.SqlConnection);
             builder.Register(c => dataProviderSettings).As<DataSettings>();
             builder.Register(x => new EfDataProviderManager(x.Resolve<DataSettings>())).As<BaseDataProviderManager>().InstancePerDependency();
 
@@ -58,9 +59,12 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             builder.RegisterType<RunawayService>().As<IRunawayService>().InstancePerLifetimeScope();
             builder.RegisterType<SponsorTransferService>().As<ISponsorTransferService>().InstancePerLifetimeScope();
 
-            var oracleRepo = new OracleRepository(config.OracleDb.ConnectionString, config.OracleDb.Schema);
+            var oracleRepo = new OracleRepository(config.OracleConnection.ConnectionString, config.OracleConnection.Schema);
             builder.Register<IOracleRepository>(ora => oracleRepo).InstancePerLifetimeScope();
 
+
+            builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
+            builder.RegisterType<SettingService>().As<ISettingService>().InstancePerLifetimeScope();
             //register all settings
             builder.RegisterSource(new SettingsSource());
         }

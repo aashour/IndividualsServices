@@ -1,12 +1,13 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Web.Http;
 
-namespace SampleAspNetWebApi.Controllers
+namespace SampleAspNetWebApiCore.Controllers
 {
-    public class IdentityController : ApiController
+    public class IdentityController : Controller
     {
         [HttpOptions]
         public HttpResponseMessage Options()
@@ -21,7 +22,7 @@ namespace SampleAspNetWebApi.Controllers
         }
 
         [Authorize]
-        public IHttpActionResult Get()
+        public IActionResult Get()
         {
             var caller = User as ClaimsPrincipal;
 

@@ -3,14 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Tamkeen.IndividualsServices.Web.Framework.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
-using Tamkeen.IndividualsServices.Core.Configuration;
 
 namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
 {
     /// <summary>
     /// Represents object for the configuring web services and middleware on application startup
     /// </summary>
-    public class WebStartup : IStartup
+    public class MvcStartup : IStartup
     {
         /// <summary>
         /// Add and configure any of the middleware
@@ -25,8 +24,6 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             //add and configure MVC feature
             services.AddIndividualsServicesMvc();
 
-            var config = services.BuildServiceProvider().GetService<IndividualsServicesConfig>();
-
         }
 
         /// <summary>
@@ -35,7 +32,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         /// <param name="application">Builder for configuring an application's request pipeline</param>
         public void Configure(IApplicationBuilder application)
         {
-            application.UseMvc();
+            application.UseIndividualsServicesMvc();
         }
 
         public int Order => 1000;
