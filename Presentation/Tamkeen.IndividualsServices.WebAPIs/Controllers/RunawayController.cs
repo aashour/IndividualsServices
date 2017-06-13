@@ -5,7 +5,7 @@ using Tamkeen.IndividualsServices.WebAPIs.Extensions;
 namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 {
     [Route("api/[controller]")]
-    public class RunawayController : Controller
+    public class RunawayController : BaseController
     {
         IRunawayService _runawayService;
 
@@ -14,14 +14,13 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             _runawayService = runawayService;
         }
 
-        [HttpGet("GetByIdNumber/{idNumber}")]
-        public IActionResult GetByIdNumber(long idNumber)
+        [HttpGet()]
+        public IActionResult GetByIdNumber()
         {
-            var runawayRequests = _runawayService.GetRunawayRequestByIdNumber(idNumber.ToString());
+            var runawayRequests = _runawayService.GetRunawayRequestByIdNumber(CurrentUser.IdNumber);
 
             if (runawayRequests != null)
             {
-
                 return Json(runawayRequests.ToDto());
             }
             else
@@ -40,8 +39,12 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
                 return NotFound();
             }
 
-            return Json(
-                runawayRequest.ToDto());
+            if (runawayRequest.Laborer?.IdNo != CurrentUser.IdNumber.ToString())
+            {
+                return Unauthorized();
+            }
+
+            return Json(runawayRequest.ToDto());
         }
     }
 }

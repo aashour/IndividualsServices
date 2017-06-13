@@ -18,11 +18,7 @@ namespace Tamkeen.IndividualsServices.Services
 
         public Laborer GetLaborerByBorderNumber(string borderNumber)
         {
-            var query = from laborer in _laborerRepository.Table
-                        where laborer.BorderNo.Equals(borderNumber, StringComparison.InvariantCultureIgnoreCase)
-                        select laborer;
-
-            return query.FirstOrDefault();
+            return _laborerRepository.Table.Where(l => l.BorderNo == borderNumber).FirstOrDefault();
         }
 
         public Laborer GetLaborerById(long laborerId)
@@ -40,11 +36,8 @@ namespace Tamkeen.IndividualsServices.Services
             if (laborerIdNumbers == null || laborerIdNumbers.Length == 0)
                 return new List<Laborer>();
 
-            var query = from l in _laborerRepository.Table
-                        where laborerIdNumbers.Contains(l.IdNo)
-                        select l;
+            var laborers = _laborerRepository.Table.Where(l => laborerIdNumbers.Contains(l.IdNo)).ToList();
 
-            var laborers = query.ToList();
             //sort by passed identifiers
             var sortedLaborers = new List<Laborer>();
 

@@ -63,7 +63,7 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 
             if (runawayComplaint.RunawayLaborId != CurrentUser.IdNumber)
             {
-                //return Task
+                return Unauthorized();
             }
 
             if (runawayComplaint != null)
@@ -73,7 +73,7 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
             }
             else
             {
-                return new NotFoundResult();
+                return NotFound();
             }
         }
     }

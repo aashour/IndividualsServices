@@ -16,58 +16,50 @@ namespace Tamkeen.IndividualsServices.Services
             _serviceLogRepository = serviceLogRepository;
             _runawayComplaintRepository = runawayComplaintRepository;
         }
-        public IEnumerable<RunawayRequest> GetRunawayRequestByIdNumber(string idNumber)
+
+        public IEnumerable<RunawayRequest> GetRunawayRequestByIdNumber(long idNumber)
         {
-            var query = from serviceLog in _serviceLogRepository.Table
-                        where serviceLog.Laborer.IdNo == idNumber &&
-                            (serviceLog.ServiceId == (int)ServiceList.LaborRunAwayService || serviceLog.ServiceId == (int)ServiceList.CancelRunaway)
-                        orderby serviceLog.CreationDate descending
-                        select serviceLog;
 
+            var allServiceLogs = _serviceLogRepository.Table.Where(s => s.Laborer.IdNo == idNumber.ToString()
+                                                                    && (s.ServiceId == (int)ServiceList.LaborRunAwayService
+                                                                        || s.ServiceId == (int)ServiceList.CancelRunaway)).ToList();
 
-
-            var runawayRequests = new List<RunawayRequest>();
-
-            if (query.Any())
+            if (!allServiceLogs.Any())
             {
-                var allServiceLogs = query.ToList();
+                return null;
+            }
 
-                foreach (var serviceLog in allServiceLogs)
-                {
-                    if (serviceLog.ServiceId == (int)ServiceList.LaborRunAwayService)
-                    {
-                        RunawayRequest runawayRequest = MapRunawayRequest(serviceLog);
+            var runawayRequests = allServiceLogs
+                     .Where(s => s.ServiceId == (int)ServiceList.LaborRunAwayService)
+                     .Select(s =>
+                         {
+                             RunawayRequest runawayRequest = MapRunawayRequest(s);
 
-                        runawayRequest.Status = RunawayRequestStatusList.Cancelled;
-                        runawayRequest.CancellationReason = RunawayCancellationReasonList.Establishment;
-                        runawayRequest.CancellationDate = allServiceLogs.Where(sl => sl.CreationDate > serviceLog.CreationDate && sl.ServiceId == (int)ServiceList.CancelRunaway).OrderBy(sl => sl.CreationDate).FirstOrDefault().CreationDate;
+                             runawayRequest.Status = RunawayRequestStatusList.Cancelled;
+                             runawayRequest.CancellationReason = RunawayCancellationReasonList.Establishment;
+                             runawayRequest.CancellationDate = allServiceLogs.Where(sl => sl.CreationDate > s.CreationDate && sl.ServiceId == (int)ServiceList.CancelRunaway).OrderBy(sl => sl.CreationDate).FirstOrDefault().CreationDate;
 
-                        runawayRequests.Add(runawayRequest);
-                    }
-                }
+                             return runawayRequest;
+                         }).ToList();
 
 
-                if (runawayRequests.Any())
-                {
-                    var laborer = allServiceLogs.First().Laborer;
+            var laborer = allServiceLogs.First().Laborer;
 
-                    if (laborer.StatusId == (int)LaborerStatusList.Runner)
-                    {
-                        runawayRequests.First().Status = RunawayRequestStatusList.Active;
-                    }
-                    else if (laborer.StatusId == (int)LaborerStatusList.Working
-                        && runawayRequests.First().CancellationDate == null
-                        && laborer.LaborerStatusModificationDate.HasValue)
-                    {
-                        runawayRequests.First().CancellationDate = laborer.LaborerStatusModificationDate.Value;
-                    }
-                }
+            if (laborer.StatusId == (int)LaborerStatusList.Runner)
+            {
+                runawayRequests.First().Status = RunawayRequestStatusList.Active;
+            }
+            else if (laborer.StatusId == (int)LaborerStatusList.Working
+                && runawayRequests.First().CancellationDate == null
+                && laborer.LaborerStatusModificationDate.HasValue)
+            {
+                runawayRequests.First().CancellationDate = laborer.LaborerStatusModificationDate.Value;
             }
 
             return runawayRequests;
         }
 
-        private static RunawayRequest MapRunawayRequest(ServiceLog serviceLog)
+        private RunawayRequest MapRunawayRequest(ServiceLog serviceLog)
         {
             return new RunawayRequest
             {
@@ -89,16 +81,14 @@ namespace Tamkeen.IndividualsServices.Services
 
         public RunawayRequest GetRunawayRequestById(int runawayRequestId)
         {
-            var runawayRequest = _serviceLogRepository.Table.Where(s=>s.Id== runawayRequestId).SingleOrDefault();
+            var runawayRequest = _serviceLogRepository.Table.Where(s => s.Id == runawayRequestId).SingleOrDefault();
 
-            if (runawayRequest != null)
+            if (runawayRequest == null)
             {
-                return MapRunawayRequest(runawayRequest);
+                return null;               
             }
-            else
-            {
-                return null;
-            }
+
+            return MapRunawayRequest(runawayRequest);
         }
 
         public RunawayComplaint GetRunawayComplaintById(int complaintId)

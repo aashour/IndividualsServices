@@ -17,21 +17,13 @@ namespace Tamkeen.IndividualsServices.Services
         }
 
         public Establishment GetEstablishment(long establishmentId)
-        {
-            var query = from establishment in _establishmentRepository.Table
-                        where establishment.Id == establishmentId
-                        select establishment;
-
-            return query.FirstOrDefault();
+        {           
+            return _establishmentRepository.GetById(establishmentId);
         }
 
         public IEnumerable<UserEstablishment> GetUserEstablishmentsByEstablishmentId(long establishmentId)
         {
-            var query = from userEstablishment in _userEstablishmentRepository.Table
-                        where userEstablishment.EstablishmentId == establishmentId 
-                        select userEstablishment;
-
-            return query.ToList();
+            return _userEstablishmentRepository.Table.Where(u => u.EstablishmentId == establishmentId).ToList();
         }
     }
 }
