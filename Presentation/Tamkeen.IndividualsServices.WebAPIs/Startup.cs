@@ -32,16 +32,6 @@ namespace Tamkeen.IndividualsServices.WebAPIs
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.Configure<MvcOptions>(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                            .AddAuthenticationSchemes("Bearer")
-                            .RequireAuthenticatedUser()
-                            .RequireClaim("id_number")
-                            .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            });
-
             var serviceProvider = services.ConfigureApplicationServices(Configuration);
             var config = serviceProvider.GetService<IndividualsServicesConfig>();
 
@@ -53,8 +43,6 @@ namespace Tamkeen.IndividualsServices.WebAPIs
                 }
             });
 
-
-
             return serviceProvider;
         }
 
@@ -65,8 +53,6 @@ namespace Tamkeen.IndividualsServices.WebAPIs
             app.UseStatusCodePages();
             app.UseCors("CorsDefaults");
             app.ConfigureRequestPipeline();
-
-
         }
     }
 

@@ -23,19 +23,22 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             var config = services.ConfigureStartupConfig<IndividualsServicesConfig>(configuration.GetSection("IndividualsServices"));
 
 
-            services
-               .AddCors(options =>
-               {
-                   options.AddPolicy("CorsDefaults", builder =>
-                   {
-                       builder
-                           .WithOrigins(config.CorsEnabledUri.ToArray())
-                           .WithHeaders(config.CorsEnabledHeaders.ToArray())
-                           .WithMethods(config.CorsEnabledVerbs.ToArray())
-                           .WithExposedHeaders(config.CorsExposedHeaders.ToArray())
-                           .AllowCredentials();
-                   });
-               });
+            if (config.Cors != null)
+            {
+                services
+                    .AddCors(options =>
+                    {
+                        options.AddPolicy("CorsDefaults", builder =>
+                        {
+                            builder
+                                .WithOrigins(config.Cors.EnabledUri.ToArray())
+                                .WithHeaders(config.Cors.EnabledHeaders.ToArray())
+                                .WithMethods(config.Cors.EnabledVerbs.ToArray())
+                                .WithExposedHeaders(config.Cors.ExposedHeaders.ToArray())
+                                .AllowCredentials();
+                        });
+                    });
+            }
 
 
             services.AddDistributedMemoryCache();

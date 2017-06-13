@@ -24,7 +24,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
         {
             //data layer
             var dataSettingsManager = new DataSettingsManager();
-            var dataProviderSettings = dataSettingsManager.LoadSettings(connectionStringName: config.DbConnection);
+            var dataProviderSettings = dataSettingsManager.LoadSettings(connectionStringName: config.SqlConnection);
             builder.Register(c => dataProviderSettings).As<DataSettings>();
             builder.Register(x => new EfDataProviderManager(x.Resolve<DataSettings>())).As<BaseDataProviderManager>().InstancePerDependency();
 
@@ -59,7 +59,7 @@ namespace Tamkeen.IndividualsServices.Web.Framework.Infrastructure
             builder.RegisterType<RunawayService>().As<IRunawayService>().InstancePerLifetimeScope();
             builder.RegisterType<SponsorTransferService>().As<ISponsorTransferService>().InstancePerLifetimeScope();
 
-            var oracleRepo = new OracleRepository(config.OracleDb.ConnectionString, config.OracleDb.Schema);
+            var oracleRepo = new OracleRepository(config.OracleConnection.ConnectionString, config.OracleConnection.Schema);
             builder.Register<IOracleRepository>(ora => oracleRepo).InstancePerLifetimeScope();
 
 

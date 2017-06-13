@@ -73,7 +73,7 @@ namespace Tamkeen.IndividualsServices.Core.Data
         /// </summary>
         /// <param name="filePath">File path; pass null to use default settings file path</param>
         /// <returns></returns>
-        public virtual DataSettings LoadSettings(string filePath = null, DbConnectionString connectionStringName = null)
+        public virtual DataSettings LoadSettings(string filePath = null, SqlConnectionInfo connectionStringName = null)
         {
             if (String.IsNullOrEmpty(filePath))
             {
@@ -90,7 +90,7 @@ namespace Tamkeen.IndividualsServices.Core.Data
             //return new DataSettings();
         }
 
-        private DataSettings LoadFromConfigFile(DbConnectionString conn)
+        private DataSettings LoadFromConfigFile(SqlConnectionInfo conn)
         {
             return ParseSettings($"DataProvider: {conn.ProviderName}\r\nDataConnectionString: {conn.ConnectionString}");
         }

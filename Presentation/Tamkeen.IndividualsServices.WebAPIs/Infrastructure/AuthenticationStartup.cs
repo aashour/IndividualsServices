@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Tamkeen.IndividualsServices.Core.Infrastructure;
 using Tamkeen.IndividualsServices.Core.Configuration;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Tamkeen.IndividualsServices.WebAPIs.Infrastructure
 {
@@ -12,7 +15,15 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Infrastructure
 
         public void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
         {
-
+            services.Configure<MvcOptions>(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                            .AddAuthenticationSchemes("Bearer")
+                            .RequireAuthenticatedUser()
+                            .RequireClaim("id_number")
+                            .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
         }
 
         public void Configure(IApplicationBuilder application)
@@ -33,8 +44,8 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Infrastructure
                 Authority = config.IdSrv.BaseUrl.ToString(),
                 ApiName = config.IdSrv.ApiName,
                 RequireHttpsMetadata = true,
-                AllowedScopes = config.RequiredScopes,
-                ApiSecret = config.ClientSecret
+                AllowedScopes = config.IdSrv.RequiredScopes,
+                ApiSecret = config.IdSrv.ClientSecret
             });
         }
 
