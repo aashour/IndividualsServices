@@ -34,11 +34,10 @@ namespace Tamkeen.IndividualsServices.WebAPIs.Controllers
 
             return View();
         }
-
+        
         //Unauthorized
         public virtual IActionResult Unauthorized()
         {
-
             this.Response.StatusCode = 401;
             this.Response.ContentType = "text/html";
 
